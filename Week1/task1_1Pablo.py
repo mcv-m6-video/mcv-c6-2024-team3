@@ -92,6 +92,46 @@ class BackgroundRemoval:
 
             cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
 
+    def train_unoptimized(self, percentageOfFrames=0.25):
+        lastFrame = math.floor(self.numFrames * percentageOfFrames)
+
+        print('Using ' + str(lastFrame) + ' frames to train the model.')
+        
+        frames = None
+        for i in tqdm(range(0, lastFrame)):
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], cv2.IMREAD_GRAYSCALE)
+
+            frame = (1./255) * frame
+            
+            if frames is None:
+                frames = np.zeros_like(frame)
+
+            frames += frame
+
+        frames = np.array(frames)
+
+        self.meanImage = frames / (lastFrame + 1)
+
+        cv2.imshow('Frame', self.meanImage)
+        cv2.waitKey(0)
+
+
+        frames = None
+        for i in tqdm(range(0, lastFrame)):
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], cv2.IMREAD_GRAYSCALE)
+
+            frame = (1./255) * frame
+            
+            if frames is None:
+                frames = np.zeros_like(frame)
+
+            frames += (frame - self.meanImage) ** 2
+
+        frames = (1. / (lastFrame + 1)) * frames
+        frames = np.sqrt(frames)
+
+        self.stadImage = frames
+
 
             
             
@@ -103,7 +143,7 @@ if __name__ == '__main__':
     
     modelo = BackgroundRemoval(inFrames, outFrames)
 
-    modelo.train()
+    modelo.train_unoptimized()
     modelo.test()
 
 
