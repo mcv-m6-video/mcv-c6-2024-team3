@@ -7,12 +7,15 @@ import math
 import numpy as np
 from tqdm import tqdm
 import pickle
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 COLOR_CHANGES = {
     'grayscale' : cv2.COLOR_BGR2GRAY,
-    'hsv' : cv2.COLOR_BGR2HSV
+    'hsv' : cv2.COLOR_BGR2HSV,
+    'readgs': cv2.IMREAD_GRAYSCALE
 }
-
+       
 
 def getFrames(pathInput, pathOutput):
         # Uncomment this if you want to introduce another different video from the test
@@ -44,14 +47,16 @@ def getFrames(pathInput, pathOutput):
 
 class BackgroundRemoval:
 
-    def __init__(self, pathInput, pathOutput, colourSpace = "grayscale", resize = None, alpha = 2.5, morph = False):
+    def __init__(self, pathInput, pathOutput, colourSpace = "readgs", resize = None, alpha = 2.5, morph = False, kernel_size = (3,3)):
         self.framesInPath = pathInput
         self.framesOutPath = pathOutput
         self.colourSpace = colourSpace
         self.resize = resize
         self.alpha = alpha
         self.morph = morph
+        self.kernel_size = kernel_size
         self.numFrames, self.listFrames = getFrames(self.framesInPath, self.framesOutPath)
+        
 
     def getNumFrames(self):
         return self.numFrames
@@ -76,19 +81,19 @@ class BackgroundRemoval:
         
         self.meanImage = np.mean(frames, axis=0) / 255
         self.stadImage = np.std(frames, axis=0) / 255
-        print("train ended")
 
 
         
 
-    """def train_unoptimized(self, colourSpace = "grayscale", size = None, percentageOfFrames=0.25):
+    def train_unoptimized(self, percentageOfFrames=0.25):
+        # i still have to implement the size thing here
         lastFrame = math.floor(self.numFrames * percentageOfFrames)
 
         print('Using ' + str(lastFrame) + ' frames to train the model.')
         
         frames = None
         for i in tqdm(range(0, lastFrame)):
-            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[colourSpace])
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[self.colourSpace])
 
             frame = (1./255) * frame
             
@@ -100,11 +105,12 @@ class BackgroundRemoval:
         frames = np.array(frames)
 
         self.meanImage = frames / (lastFrame + 1)
+        #cv2.imwrite('mean_image.png', self.meanImage*255)
 
 
         frames = None
         for i in tqdm(range(0, lastFrame)):
-            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[colourSpace])
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[self.colourSpace])
 
             frame = (1./255) * frame
             
@@ -116,7 +122,13 @@ class BackgroundRemoval:
         frames = (1. / (lastFrame + 1)) * frames
         frames = np.sqrt(frames)
 
-        self.stadImage = frames"""
+        self.stadImage = frames
+
+        """#cv2.imwrite('stad.png', self.stadImage*255)
+        sns.heatmap(self.stadImage, cmap='viridis')
+
+        # Save the heatmap as an image
+        plt.savefig('stad.png')"""
 
 
     def test(self):
@@ -136,9 +148,11 @@ class BackgroundRemoval:
             frame = np.abs(frame - self.meanImage)
             result = frame >=  self.alpha * (self.stadImage + 2/255)
 
-            # do morphological operators
+
             if self.morph:
-                 pass
+                 result = result.astype(np.uint8)
+                 result = cv2.morphologyEx(result, cv2.MORPH_OPEN, self.kernel_size)
+
                  
 
             result = result.astype(np.uint8) * 255
@@ -147,18 +161,17 @@ class BackgroundRemoval:
             cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
 
 
-            
+     
             
 
 if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = '/home/user/Documents/MASTER/C6/AICity_data/train/S03/c010/vdo.avi'
     outFrames = 'framesOriginal'
-    modelo = BackgroundRemoval(inFrames, outFrames, resize = (100,100), morph = True)
+    modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(3,3))
 
-    #modelo.train_unoptimized()
-
-    modelo.train()
+    modelo.train_unoptimized()
+    #modelo.train()
     modelo.test()
 
 
