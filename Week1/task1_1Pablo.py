@@ -12,88 +12,90 @@ COLOR_CHANGES = {
     'grayscale' : cv2.COLOR_BGR2GRAY,
     'hsv' : cv2.COLOR_BGR2HSV
 }
-class BackgroundRemoval:
+def getFrames(pathInput, pathOutput):
+        # Uncomment this if you want to introduce another different video from the test
+        if not os.path.exists(pathOutput):
+            cap = cv2.VideoCapture(pathInput)
 
-    def __init__(self, pathInput, newHeight = None, newWidth = None, colorSpace = 'grayscale'):
-        self.framesInPath = pathInput
-        self.frames = []
-        self.fps = None
-        self.width = newWidth
-        self.height = newHeight
-        self.channels = None
-        self.colorSpace = colorSpace
-        self.totalFrames = 0
+            if os.path.exists(pathOutput):  
+                shutil.rmtree(pathOutput)
 
-    
-    def apply_changes(self, frames):
-
-        newFrames = cv2.cvtColor(frames, COLOR_CHANGES[self.colorSpace])
-
-        if self.width is not None and self.height is not None:
-            newFrames = cv2.resize(newFrames, (self.width, self.height))
-
-        return newFrames
+            frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
 
-        
-    def getFrames(self, preload=False):
+            os.mkdir(pathOutput)
 
-        if preload and not os.path.exists('frames.pkl'):
-            print('The pkl file is not there, preload is not going to be used.')
-            preload = False
-
-        if preload:
-            print('Loading the pkl file.')
-            with open('frames.pkl', 'rb') as f:
-                self.frames = pickle.load(f)
-
-            print(self.frames.shape)
-            self.totalFrames, self.height, self.width, self.channels = self.frames.shape
-
-            print(self.totalFrames, self.width, self.height)
-            print('Loading done.')
-        
-        else:
-
-            cap = cv2.VideoCapture(self.framesInPath)
-
-            self.totalFrames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
-            print(f'Getting the frames. There are {self.totalFrames}.')
-
-            self.fps = cap.get(cv2.CAP_PROP_FPS)
-
-            for _ in tqdm(range(self.totalFrames)):
+            totalFrames = 0
+            for _ in tqdm(range(0, frames)):
                 ret, frame = cap.read()
                 if ret == False:
                     break
-                
-                self.frames.append(frame)
+                cv2.imwrite(pathOutput + '/frame' + str(totalFrames).zfill(5) + '.jpg', frame)
+                totalFrames += 1
 
-            cap.release()
+            return totalFrames, os.listdir(pathOutput)
+        
+        else:
+            return len([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))]), os.listdir(pathOutput)
 
-            self.frames = np.array(self.frames)
+class BackgroundRemoval:
 
-            with open('frames.pkl', 'wb') as f:
-                pickle.dump(self.frames, f)
+    def __init__(self, pathInput, pathOutput):
+        self.framesInPath = pathInput
+        self.framesOutPath = pathOutput
+        self.numFrames, self.listFrames = getFrames(self.framesInPath, self.framesOutPath)
 
-            print('Frames obtained.')
+    def getNumFrames(self):
+        return self.numFrames
+    
+    def getFrames(self):
+        return self.listFrames
+    
+    def train(self, percentageOfFrames=0.25):
+        lastFrame = math.floor(self.numFrames * percentageOfFrames)
 
+        print('Using ' + str(lastFrame) + ' frames to train the model.')
+        
+        frames = []
+        for i in tqdm(range(0, lastFrame)):
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], cv2.IMREAD_GRAYSCALE)
+            frames.append(frame)
 
-    def train(self, percentageFrames = 0.25):
-        lastFrame = int(math.floor(self.totalFrames * percentageFrames))
+        frames = np.array(frames)
 
-        newFrames = self.apply_changes(self.frames)
+        self.meanImage = np.mean(frames, axis=0) / 255
+        self.stadImage = np.std(frames, axis=0) / 255
 
-        self.mean = np.mean(newFrames[:lastFrame, :, :], axis=0) / 255
+        # cv2.imshow('Mean Image', self.meanImage)
+        # cv2.waitKey(0)
 
-        self.std = np.std(newFrames[:lastFrame, :, :], axis=0) / 255
+    def test(self, alpha = 2.5):
 
-        cv2.imshow('Frame', self.mean)
-        cv2.waitKey(0)
+        videoIn = cv2.VideoCapture(self.framesInPath)
+        fps = videoIn.get(cv2.CAP_PROP_FPS)
+        frame_width = int(videoIn.get(cv2.CAP_PROP_FRAME_WIDTH))
+        frame_height = int(videoIn.get(cv2.CAP_PROP_FRAME_HEIGHT))
+        videoIn.release()
 
-    def test(self, percentageTrainFrames = 0.25):
-        pass
+        video_name = 'Task1_1.mp4'
+        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+
+        video = cv2.VideoWriter(video_name, fourcc, fps, (frame_width, frame_height))
+
+        for i in tqdm(range(0, self.numFrames)):
+            frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], cv2.IMREAD_GRAYSCALE)
+            frame = frame * (1. / 255)
+
+            frame = np.abs(frame - self.meanImage)
+
+            result = frame >=  alpha * (alpha * self.stadImage + 2/255)
+            result = result.astype(np.uint8) * 255
+            
+            result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)
+
+            video.write(result)
+        
+        video.release()
 
             
             
@@ -101,11 +103,12 @@ class BackgroundRemoval:
 if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = 'c010\\vdo.avi'
+    outFrames = 'frames'
     
-    modelo = BackgroundRemoval(inFrames)
+    modelo = BackgroundRemoval(inFrames, outFrames)
 
-    modelo.getFrames(preload=True)
     modelo.train()
+    modelo.test()
 
 
 
