@@ -134,7 +134,7 @@ class BackgroundRemoval:
             frame = frame * (1. / 255)
 
             frame = np.abs(frame - self.meanImage)
-            result = frame >=  self.alpha * (self.alpha * self.stadImage + 2/255)
+            result = frame >=  self.alpha * (self.stadImage + 2/255)
 
             # do morphological operators
             if self.morph:
