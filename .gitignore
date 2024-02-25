@@ -2,6 +2,8 @@ Week1/c010/*
 ai_challenge_s03_c010-full_annotation.xml
 .venv/*
 .vscode/*
-Week1/frames/
+Week1/framesOriginal/
+Week1/framesResult/
 *.mp4
 *.pkl
+

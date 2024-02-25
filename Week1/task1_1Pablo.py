@@ -15,6 +15,7 @@ COLOR_CHANGES = {
 def getFrames(pathInput, pathOutput):
         # Uncomment this if you want to introduce another different video from the test
         if not os.path.exists(pathOutput):
+            print('Creating the fodler to store the original frames.')
             cap = cv2.VideoCapture(pathInput)
 
             if os.path.exists(pathOutput):  
@@ -30,12 +31,13 @@ def getFrames(pathInput, pathOutput):
                 ret, frame = cap.read()
                 if ret == False:
                     break
-                cv2.imwrite(pathOutput + '/frame' + str(totalFrames).zfill(5) + '.jpg', frame)
+                cv2.imwrite(pathOutput + '/frame' + str(totalFrames).zfill(5) + '.png', frame)
                 totalFrames += 1
 
             return totalFrames, os.listdir(pathOutput)
         
         else:
+            print('The folder already exists, reading the content.')
             return len([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))]), os.listdir(pathOutput)
 
 class BackgroundRemoval:
@@ -71,16 +73,11 @@ class BackgroundRemoval:
 
     def test(self, alpha = 2.5):
 
-        videoIn = cv2.VideoCapture(self.framesInPath)
-        fps = videoIn.get(cv2.CAP_PROP_FPS)
-        frame_width = int(videoIn.get(cv2.CAP_PROP_FRAME_WIDTH))
-        frame_height = int(videoIn.get(cv2.CAP_PROP_FRAME_HEIGHT))
-        videoIn.release()
+        outputFolder = 'framesResult'
+        if os.path.exists(outputFolder):  
+                shutil.rmtree(outputFolder)
 
-        video_name = 'Task1_1.mp4'
-        fourcc = cv2.VideoWriter_fourcc(*'mp4v')
-
-        video = cv2.VideoWriter(video_name, fourcc, fps, (frame_width, frame_height))
+        os.mkdir(outputFolder)
 
         for i in tqdm(range(0, self.numFrames)):
             frame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], cv2.IMREAD_GRAYSCALE)
@@ -93,9 +90,8 @@ class BackgroundRemoval:
             
             result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)
 
-            video.write(result)
-        
-        video.release()
+            cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
+
 
             
             
@@ -103,7 +99,7 @@ class BackgroundRemoval:
 if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = 'c010\\vdo.avi'
-    outFrames = 'frames'
+    outFrames = 'framesOriginal'
     
     modelo = BackgroundRemoval(inFrames, outFrames)
 
