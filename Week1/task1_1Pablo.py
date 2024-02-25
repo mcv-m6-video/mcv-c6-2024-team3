@@ -70,6 +70,7 @@ class BackgroundRemoval:
 
         # cv2.imshow('Mean Image', self.meanImage)
         # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
 
     def test(self, alpha = 2.5):
 
@@ -111,10 +112,6 @@ class BackgroundRemoval:
         frames = np.array(frames)
 
         self.meanImage = frames / (lastFrame + 1)
-
-        cv2.imshow('Frame', self.meanImage)
-        cv2.waitKey(0)
-
 
         frames = None
         for i in tqdm(range(0, lastFrame)):
