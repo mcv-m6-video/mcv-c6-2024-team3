@@ -4,6 +4,8 @@ ai_challenge_s03_c010-full_annotation.xml
 .vscode/*
 Week1/framesOriginal/
 Week1/framesResult/
+Week1/framesResult_adaptive/
+
 *.mp4
 *.pkl
 
