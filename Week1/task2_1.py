@@ -173,9 +173,6 @@ if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = '/home/user/Documents/MASTER/C6/AICity_data/train/S03/c010/vdo.avi'
     outFrames = 'framesOriginal'
-    contents = os.listdir("./framesOriginal")
-    
-    print(contents)
     modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(11,11))
 
     modelo.train_unoptimized()
