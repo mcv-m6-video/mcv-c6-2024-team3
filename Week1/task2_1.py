@@ -38,16 +38,17 @@ def getFrames(pathInput, pathOutput):
                     break
                 cv2.imwrite(pathOutput + '/frame' + str(totalFrames).zfill(5) + '.png', frame)
                 totalFrames += 1
-
-            return totalFrames, os.listdir(pathOutput)
+            file_list = sorted(os.listdir(pathOutput))
+            return totalFrames, file_list
         
         else:
             print('The folder already exists, reading the content.')
-            return len([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))]), os.listdir(pathOutput)
+            file_list = sorted([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))])
+            return len(file_list), file_list
 
 class BackgroundRemoval:
 
-    def __init__(self, pathInput, pathOutput, colourSpace = "readgs", resize = None, alpha = 4, ro = 0.001, morph = False, kernel_size = (3,3)):
+    def __init__(self, pathInput, pathOutput, colourSpace = "readgs", resize = None, alpha = 4, ro = 0.01, morph = False, kernel_size = (3,3)):
         self.framesInPath = pathInput
         self.framesOutPath = pathOutput
         self.colourSpace = colourSpace
@@ -172,7 +173,10 @@ if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = '/home/user/Documents/MASTER/C6/AICity_data/train/S03/c010/vdo.avi'
     outFrames = 'framesOriginal'
-    modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(3,3))
+    contents = os.listdir("./framesOriginal")
+    
+    print(contents)
+    modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(11,11))
 
     modelo.train_unoptimized()
     #modelo.train()
