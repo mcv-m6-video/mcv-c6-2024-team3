@@ -38,12 +38,13 @@ def getFrames(pathInput, pathOutput):
                     break
                 cv2.imwrite(pathOutput + '/frame' + str(totalFrames).zfill(5) + '.png', frame)
                 totalFrames += 1
-
-            return totalFrames, os.listdir(pathOutput)
+            file_list = sorted(os.listdir(pathOutput))
+            return totalFrames, file_list
         
         else:
             print('The folder already exists, reading the content.')
-            return len([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))]), os.listdir(pathOutput)
+            file_list = sorted([name for name in os.listdir(pathOutput) if os.path.isfile(os.path.join(pathOutput, name))])
+            return len(file_list), file_list
 
 class BackgroundRemoval:
 
