@@ -47,7 +47,7 @@ def getFrames(pathInput, pathOutput):
 
 class BackgroundRemoval:
 
-    def __init__(self, pathInput, pathOutput, colourSpace = "readgs", resize = None, alpha = 4, ro = 0.2, morph = False, kernel_size = (3,3)):
+    def __init__(self, pathInput, pathOutput, colourSpace = "readgs", resize = None, alpha = 4, ro = 0.001, morph = False, kernel_size = (3,3)):
         self.framesInPath = pathInput
         self.framesOutPath = pathOutput
         self.colourSpace = colourSpace
@@ -157,7 +157,7 @@ class BackgroundRemoval:
 
             #ADAPTIVE PART -> if pixel is in the background, update mean and variance
             self.meanImage[result == 0] = self.ro*originalFrame[result == 0] + (1-self.ro)*self.meanImage[result == 0]
-            self.stadImage[result == 0] = self.ro*(originalFrame[result == 0]-self.meanImage[result == 0])**2 + (1-self.ro)*self.stadImage[result == 0]**2
+            self.stadImage[result == 0] = np.sqrt(self.ro*(originalFrame[result == 0]-self.meanImage[result == 0])**2 + (1-self.ro)*self.stadImage[result == 0]**2)
 
             result = result.astype(np.uint8) * 255
             
