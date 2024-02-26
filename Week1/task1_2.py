@@ -50,7 +50,8 @@ if __name__ == "__main__":
 
     frameNumber = 1000
     path = 'framesOriginal/'
-    frames_list = os.listdir(path)
+    frames_list = sorted(os.listdir(path))
 
+    print(frames_list)
     draw_bbox(path, frames_list, frameNumber, bbox_info[frameNumber], [])
 
