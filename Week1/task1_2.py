@@ -2,30 +2,56 @@ import xml.etree.ElementTree as ET
 import os
 import numpy as np
 import cv2
+from tqdm import tqdm
+from evaluation import voc_ap, voc_iou, voc_eval
 
-def read_ground_truth(xml_file, classes):
+def read_ground_truth(xml_file, classes, n_frames):
+    '''
+    [
+        [[x1, y1, x2, y2], [x1, y1, x2, y2], …],
+        [[x1, y1, x2, y2], [x1, y1, x2, y2], …], 
+        …,
+        [[...]]
+    ]
+    '''
     tree = ET.parse(xml_file)
     root = tree.getroot()
 
-    bbox_info = {}
+    bbox_info = [[] for _ in range(n_frames)]
+
+    print(len(bbox_info))
 
     for track in root.findall('./track'):
         label = track.attrib['label']
+
         if label in classes:
             for box in track.findall('box'):
-                frame = int(box.attrib['frame'])
-                xtl = float(box.attrib['xtl'])
-                ytl = float(box.attrib['ytl'])
-                xbr = float(box.attrib['xbr'])
-                ybr = float(box.attrib['ybr'])
-                
-                bbox_info.setdefault(frame, []).append([
-                    xtl, ytl, xbr, ybr
-                ])
+                parked = False
+                for attribute in box.findall('attribute'):
+                    if attribute.attrib.get('name') == 'parked' and attribute.text == 'true':
+                        parked = True
+                        break
+                if not parked:
+                    frame = int(box.attrib['frame'])
+                    xtl = float(box.attrib['xtl'])
+                    ytl = float(box.attrib['ytl'])
+                    xbr = float(box.attrib['xbr'])
+                    ybr = float(box.attrib['ybr'])
+                    
+                    bbox_info[frame].append([
+                        xtl, ytl, xbr, ybr
+                    ])
         
     return bbox_info
 
-def draw_bbox(path, frame_list, frameNumber, bboxGT, bboxPred, draw = True):
+def draw_bbox(path, frame_list, frameNumber, bboxGT, bboxPred):
+    '''
+    paht don vols treure la foto per imrpimir en color
+    frame_list la llista amb els noms dels frames
+    framenumber
+    bboxGT la llista de llistes amb les coordenades dels bbox [[x1, y1, x2, y2], [x1, y1, x2, y2], …]
+    bboxPred la llista de llistes amb les coordenades dels bbox [[x1, y1, x2, y2], [x1, y1, x2, y2], …]
+    '''
     frame = cv2.imread(path + frame_list[frameNumber], cv2.IMREAD_COLOR)
     
     for bbox in bboxGT:
@@ -38,9 +64,9 @@ def draw_bbox(path, frame_list, frameNumber, bboxGT, bboxPred, draw = True):
         xtl, ytl, xbr, ybr = int(xtl), int(ytl), int(xbr), int(ybr)
         cv2.rectangle(frame, (xtl, ytl), (xbr, ybr), (0, 0, 255), 2)
     
-    if draw:
-        cv2.imshow('frame', frame)
-        cv2.waitKey(0)
+    
+    cv2.imshow('frame', frame)
+    cv2.waitKey(0)
 
 def get_bbox_predictions(path, frame_list):
     '''
@@ -135,7 +161,7 @@ def get_bbox_from_single_image(image):
 
     num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary_image, connectivity=8)
 
-    min_area_threshold = 100
+    min_area_threshold = 200
 
     filtred_components = np.zeros_like(gray_image)
 
@@ -145,8 +171,6 @@ def get_bbox_from_single_image(image):
             mask = labels == i
             color = 255  # Generate a random color
             filtred_components[mask] = color
-
-    num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(filtred_components, connectivity=8)
 
     _, binary_image = cv2.threshold(filtred_components, 127, 255, cv2.THRESH_BINARY)
 
@@ -188,8 +212,21 @@ def get_bbox_from_single_image(image):
             ])
 
     return final_bounding_boxes
-    
 
+def get_all_bb(path_frames):
+    '''
+    THE INPUT IS THE PATH TO THE FOLDER WITH THE FRAMES AND IT WILL RETURN A LIST OF LISTS IN THE FORM OF [bbox1, bbox2, ...]
+    '''
+    frames_list = sorted(os.listdir(path_frames))
+    bbox_info = []
+
+    for frameNumber in tqdm(range(0, len(frames_list))):
+        image = cv2.imread(path_frames + frames_list[frameNumber], cv2.IMREAD_COLOR)
+        bbox_info.append(get_bbox_from_single_image(image))
+
+    return bbox_info
+    
+    
 '''
 TO draw on a frame the GT and the predictions use the draw_bbox function
 '''
@@ -197,14 +234,22 @@ if __name__ == "__main__":
     xml_file = 'ai_challenge_s03_c010-full_annotation.xml'
 
     classes = ['car'] # The other class is bike
-    bbox_info = read_ground_truth(xml_file, classes)
 
     path = 'framesOriginal/'
     frames_list = sorted(os.listdir(path))
 
-    frameNumber = 100
+    n_frames = len(frames_list)
+    bbox_info = read_ground_truth(xml_file, classes, n_frames)
+
+    path = 'framesOriginal/'
+    frames_list = sorted(os.listdir(path))
+
+    print(len(bbox_info))
+
+    frameNumber = 1000
     image = cv2.imread('framesResult/' + frames_list[frameNumber], cv2.IMREAD_COLOR)
     draw_bbox(path, frames_list, frameNumber, bbox_info[frameNumber], get_bbox_from_single_image(image))
+    
 
     '''
     for frameNumber in range(len(frames_list)):
@@ -217,5 +262,6 @@ if __name__ == "__main__":
     frames_list_results = sorted(os.listdir(path_results))
     bbox_info_predictions = get_bbox_predictions(path_results, frames_list_results)
     '''
+    
 
 
