@@ -181,7 +181,7 @@ class BackgroundRemoval:
         for i in tqdm(range(0, self.numFrames)):
             originalFrame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[self.colourSpace])
             if self.channels != 3 and self.colourSpace != 'readgs':
-                originalFrame = self.get_channels(frame)
+                originalFrame = self.get_channels(originalFrame)
             if self.resize is not None:
                  originalFrame = cv2.resize(originalFrame, self.resize)
             originalFrame = originalFrame * (1. / 255)
@@ -216,7 +216,7 @@ if __name__ == '__main__':
         - ro: de 0 a nose quant
         - alpha: de 0 a 1
         - colorspace: els que he definit
-        - channels: 1a, 1b, 1c, 1-2, 1-3, 2-3, 3
+        - channels: 1a, 1b, 1c, 1-2, 1-3, 2-3, 3 (if only 2 channels, cant be saved as image)
         - number of gaussians: 1- k
         - T threshold to say if belonds to background or foreground (entre 0 i 1?)
 
@@ -227,7 +227,7 @@ if __name__ == '__main__':
     # Read a video and save the frames on a folder
     inFrames = '/home/user/Documents/MASTER/C6/AICity_data/train/S03/c010/vdo.avi'
     outFrames = 'framesOriginal'
-    modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(11,11), colourSpace = 'hsv', channels = "1a", gaussians = 7, T = 0.7)
+    modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(11,11), colourSpace = 'hsv', channels = "1-2", gaussians = 7, T = 0.7)
 
     modelo.train_unoptimized()
     #modelo.train()
