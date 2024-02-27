@@ -23,8 +23,8 @@ sweep_config = {
     }
  }
 
-def evaluate(pathResults, bboxGT):
-    bboxPred = get_all_bb(pathResults)
+def evaluate(pathResults, bboxGT, kernel_open, kernel_close):
+    bboxPred = get_all_bb(pathResults,  kernel_open, kernel_close)
 
     map, mrecs, mprecs = mAP(bboxPred, bboxGT)
 
@@ -47,10 +47,14 @@ def train(config=None):
         xml_file = 'ai_challenge_s03_c010-full_annotation.xml'
         classes = ['car'] # The other class is bike
         bbox_info = read_ground_truth(xml_file, classes, n_frames)
-
+    
         outputFolderModel = 'framesResult/'
+        kernel_open = 5 #New
+        kernel_close = 30 #New
         
-        mapScore, recScore, precScore = evaluate(outputFolderModel, bbox_info)
+        mapScore, precScore, recScore = evaluate(outputFolderModel, bbox_info, kernel_open, kernel_close)
+    
+        print('map: ', mapScore)
 
         wandb.log({'map': mapScore, 'precision': precScore, 'recall': recScore})
 
