@@ -147,7 +147,7 @@ def get_bbox_predictions(path, frame_list):
         cv2.waitKey(1)
 
 
-def get_bbox_from_single_image(image):
+def get_bbox_from_single_image(image, kernel_open, kernel_close):
     '''
     THE INPUT IS AN IMAGE IN GRAYSCALE COLORSPACE (THE PREDICTION OF THE MODEL) AND IT WIL RETURN A LIST OF LISTS IN THE FORM OF [bbox1, bbox2, ...]
     '''
@@ -159,23 +159,26 @@ def get_bbox_from_single_image(image):
     
     _, binary_image = cv2.threshold(gray_image, 127, 255, cv2.THRESH_BINARY)
 
+    binary_image = cv2.morphologyEx(binary_image, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_open,kernel_open)))
+    binary_image = cv2.morphologyEx(binary_image, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (kernel_close,kernel_close)))
+
     num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary_image, connectivity=8)
 
-    min_area_threshold = 200
+    min_area_threshold = 250
 
     filtred_components = np.zeros_like(gray_image)
 
     for i in range(1, num_labels):  # Exclude background label which is 0
         area = stats[i, cv2.CC_STAT_AREA]
-        if area >= min_area_threshold:
+        if area >= min_area_threshold and area<200000: #Discard small and big BB
             mask = labels == i
             color = 255  # Generate a random color
             filtred_components[mask] = color
 
     _, binary_image = cv2.threshold(filtred_components, 127, 255, cv2.THRESH_BINARY)
 
-    binary_image = cv2.morphologyEx(binary_image, cv2.MORPH_DILATE, cv2.getStructuringElement(cv2.MORPH_RECT, (30, 30)))
-
+    #binary_image = cv2.morphologyEx(binary_image, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_RECT, (40, 40)))
+    #binary_image = cv2.morphologyEx(binary_image, cv2.MORPH_OPEN, cv2.getStructuringElement(cv2.MORPH_RECT, (10,10)))
     num_labels, labels, stats, centroids = cv2.connectedComponentsWithStats(binary_image, connectivity=8)
 
     output_image = np.zeros_like(image)
@@ -184,13 +187,14 @@ def get_bbox_from_single_image(image):
 
     for i in range(1, num_labels):  # Exclude background label which is 0
         area = stats[i, cv2.CC_STAT_AREA]
-        mask = labels == i
-        color = np.random.randint(0, 255, size=3)  # Generate a random color
-        output_image[mask] = color
+        if area<200000:
+            mask = labels == i
+            color = np.random.randint(0, 255, size=3)  # Generate a random color
+            output_image[mask] = color
 
-        x, y, w, h = stats[i, cv2.CC_STAT_LEFT], stats[i, cv2.CC_STAT_TOP], stats[i, cv2.CC_STAT_WIDTH], stats[i, cv2.CC_STAT_HEIGHT]
+            x, y, w, h = stats[i, cv2.CC_STAT_LEFT], stats[i, cv2.CC_STAT_TOP], stats[i, cv2.CC_STAT_WIDTH], stats[i, cv2.CC_STAT_HEIGHT]
 
-        bounding_boxes.append((x, y, w, h))
+            bounding_boxes.append((x, y, w, h))
 
     merged_boxes = []
 
@@ -207,13 +211,15 @@ def get_bbox_from_single_image(image):
                 merged = True
                 break
         if not merged:
-            final_bounding_boxes.append([
-                x, y, x + w, y + h
-            ])
+            ratio = w/h 
+            if ratio>0.8: #To discard the persons
+                final_bounding_boxes.append([
+                    x, y, x + w, y + h
+                ])
 
     return final_bounding_boxes
 
-def get_all_bb(path_frames):
+def get_all_bb(path_frames, kernel_open, kernel_close):
     '''
     THE INPUT IS THE PATH TO THE FOLDER WITH THE FRAMES AND IT WILL RETURN A LIST OF LISTS IN THE FORM OF [bbox1, bbox2, ...]
     '''
@@ -222,7 +228,7 @@ def get_all_bb(path_frames):
 
     for frameNumber in tqdm(range(0, len(frames_list))):
         image = cv2.imread(path_frames + frames_list[frameNumber], cv2.IMREAD_COLOR)
-        bbox_info.append(get_bbox_from_single_image(image))
+        bbox_info.append(get_bbox_from_single_image(image, kernel_open, kernel_close))
 
     return bbox_info
     
@@ -245,10 +251,12 @@ if __name__ == "__main__":
     frames_list = sorted(os.listdir(path))
 
     print(len(bbox_info))
+    kernel_open = 5 #New
+    kernel_close = 30 #New
 
     frameNumber = 1000
     image = cv2.imread('framesResult/' + frames_list[frameNumber], cv2.IMREAD_COLOR)
-    draw_bbox(path, frames_list, frameNumber, bbox_info[frameNumber], get_bbox_from_single_image(image))
+    draw_bbox(path, frames_list, frameNumber, bbox_info[frameNumber], get_bbox_from_single_image(image, kernel_open, kernel_close))
     
 
     '''
