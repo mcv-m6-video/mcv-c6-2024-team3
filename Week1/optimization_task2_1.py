@@ -29,8 +29,8 @@ sweep_config = {
     }
  }
 
-def evaluate(pathResults, bboxGT):
-    bboxPred = get_all_bb(pathResults)
+def evaluate(pathResults, bboxGT, kernel_open, kernel_close):
+    bboxPred = get_all_bb(pathResults, kernel_open, kernel_close)
 
     map = mAP(bboxPred, bboxGT)
 
@@ -44,6 +44,8 @@ def train(config=None):
         outFrames = 'framesOriginal'
 
         kernel_number = config.kernel_size
+        kernel_open = 3 #NEW
+        kernel_close = 30 #NEW
         modelo = BackgroundRemoval(inFrames, outFrames, alpha = config.alpha, ro = config.rho, morph = True, kernel_size=(kernel_number, kernel_number))
 
         modelo.train()
@@ -56,7 +58,7 @@ def train(config=None):
 
         outputFolderModel = 'framesResult_adaptive/'
         
-        mapScore = evaluate(outputFolderModel, bbox_info)
+        mapScore = evaluate(outputFolderModel, bbox_info, kernel_open, kernel_close)
 
         wandb.log({'map': mapScore})
 
