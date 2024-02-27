@@ -1,0 +1,8 @@
+wandb_version: 1
+
+alpha:
+  value: 9.44484428333926
+kernel_size:
+  value: 3
+rho:
+  value: 0.3862522829090798
