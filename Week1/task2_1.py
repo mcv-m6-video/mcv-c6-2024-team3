@@ -165,6 +165,42 @@ class BackgroundRemoval:
             #result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)  
             cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
 
+    
+    def fast_test(self, ro, alpha, kernel_size):
+
+        self.alpha = alpha
+        self.ro = ro
+        self.kernel_size = kernel_size
+
+        outputFolder = 'framesResult_adaptive'
+        if os.path.exists(outputFolder):  
+                shutil.rmtree(outputFolder)
+
+        os.mkdir(outputFolder)
+
+        for i in tqdm(range(0, self.numFrames)):
+            originalFrame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[self.colourSpace])
+            if self.resize is not None:
+                 originalFrame = cv2.resize(originalFrame, self.resize)
+            originalFrame = originalFrame * (1. / 255)
+
+            #Classification into foreground or background
+            frame = np.abs(originalFrame - self.meanImage)
+            result = frame >=  self.alpha * (self.stadImage + 2/255)
+
+            if self.morph:
+                 result = result.astype(np.uint8)
+                 result = cv2.morphologyEx(result, cv2.MORPH_OPEN, self.kernel_size)
+
+            #ADAPTIVE PART -> if pixel is in the background, update mean and variance
+            self.meanImage[result == 0] = self.ro*originalFrame[result == 0] + (1-self.ro)*self.meanImage[result == 0]
+            self.stadImage[result == 0] = np.sqrt(self.ro*(originalFrame[result == 0]-self.meanImage[result == 0])**2 + (1-self.ro)*self.stadImage[result == 0]**2)
+
+            result = result.astype(np.uint8) * 255
+            
+            #result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)  
+            cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
+
 
      
             

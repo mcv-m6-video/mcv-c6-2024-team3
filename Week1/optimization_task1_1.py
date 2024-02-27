@@ -26,9 +26,9 @@ sweep_config = {
 def evaluate(pathResults, bboxGT):
     bboxPred = get_all_bb(pathResults)
 
-    map = mAP(bboxPred, bboxGT)
+    map, mrecs, mprecs = mAP(bboxPred, bboxGT)
 
-    return map
+    return map, mrecs, mprecs
 
 def train(config=None):
     with wandb.init(config=config):
@@ -38,10 +38,10 @@ def train(config=None):
         outFrames = 'framesOriginal'
 
         kernel_number = config.kernel_size
-        modelo = BackgroundRemoval(inFrames, outFrames, alpha = config.alpha, morph = True, kernel_size=(kernel_number, kernel_number))
+        # modelo = BackgroundRemoval(inFrames, outFrames, alpha = config.alpha, morph = True, kernel_size=(kernel_number, kernel_number))
 
-        modelo.train()
-        modelo.test()
+        # modelo.train()
+        modelo.fast_test(alpha=config.alpha, kernel_size=(kernel_number, kernel_number))
 
         n_frames = len(os.listdir(outFrames))
         xml_file = 'ai_challenge_s03_c010-full_annotation.xml'
@@ -50,11 +50,19 @@ def train(config=None):
 
         outputFolderModel = 'framesResult/'
         
-        mapScore = evaluate(outputFolderModel, bbox_info)
+        mapScore, recScore, precScore = evaluate(outputFolderModel, bbox_info)
 
-        wandb.log({'map': mapScore})
+        wandb.log({'map': mapScore, 'precision': precScore, 'recall': recScore})
 
 
 if __name__ == '__main__':
+    
+    inFrames = 'c010/vdo.avi'
+    outFrames = 'framesOriginal'
+
+    kernel_number = (11, 11)
+    modelo = BackgroundRemoval(inFrames, outFrames, alpha = 0.25, morph = True, kernel_size=(kernel_number, kernel_number))
+    modelo.train()
+
     sweep_id = wandb.sweep(sweep_config, project="OptimizationC6_Task1_1")
     wandb.agent(sweep_id, function=train, count=200)

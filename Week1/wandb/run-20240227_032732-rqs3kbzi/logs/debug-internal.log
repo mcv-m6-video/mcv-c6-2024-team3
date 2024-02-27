@@ -1,0 +1,426 @@
+2024-02-27 03:27:32,412 INFO    StreamThr :17220 [internal.py:wandb_internal():86] W&B internal server running at pid: 17220, started at: 2024-02-27 03:27:32.412236
+2024-02-27 03:27:32,413 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status
+2024-02-27 03:27:32,418 INFO    WriterThread:17220 [datastore.py:open_for_write():87] open: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\run-rqs3kbzi.wandb
+2024-02-27 03:27:32,419 DEBUG   SenderThread:17220 [sender.py:send():382] send: header
+2024-02-27 03:27:32,512 DEBUG   SenderThread:17220 [sender.py:send():382] send: run
+2024-02-27 03:27:32,898 INFO    SenderThread:17220 [dir_watcher.py:__init__():211] watching files in: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files
+2024-02-27 03:27:32,898 INFO    SenderThread:17220 [sender.py:_start_run_threads():1136] run started: rqs3kbzi with start time 1709000852.412235
+2024-02-27 03:27:32,904 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: check_version
+2024-02-27 03:27:32,904 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: check_version
+2024-02-27 03:27:33,002 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: run_start
+2024-02-27 03:27:33,023 DEBUG   HandlerThread:17220 [system_info.py:__init__():27] System info init
+2024-02-27 03:27:33,023 DEBUG   HandlerThread:17220 [system_info.py:__init__():42] System info init done
+2024-02-27 03:27:33,024 INFO    HandlerThread:17220 [system_monitor.py:start():194] Starting system monitor
+2024-02-27 03:27:33,024 INFO    SystemMonitor:17220 [system_monitor.py:_start():158] Starting system asset monitoring threads
+2024-02-27 03:27:33,024 INFO    HandlerThread:17220 [system_monitor.py:probe():214] Collecting system info
+2024-02-27 03:27:33,029 INFO    SystemMonitor:17220 [interfaces.py:start():190] Started cpu monitoring
+2024-02-27 03:27:33,029 INFO    SystemMonitor:17220 [interfaces.py:start():190] Started disk monitoring
+2024-02-27 03:27:33,030 INFO    SystemMonitor:17220 [interfaces.py:start():190] Started gpu monitoring
+2024-02-27 03:27:33,034 INFO    SystemMonitor:17220 [interfaces.py:start():190] Started memory monitoring
+2024-02-27 03:27:33,043 INFO    SystemMonitor:17220 [interfaces.py:start():190] Started network monitoring
+2024-02-27 03:27:33,045 DEBUG   HandlerThread:17220 [system_info.py:probe():151] Probing system
+2024-02-27 03:27:33,046 DEBUG   HandlerThread:17220 [system_info.py:_probe_git():136] Probing git
+2024-02-27 03:27:33,093 DEBUG   HandlerThread:17220 [system_info.py:_probe_git():144] Probing git done
+2024-02-27 03:27:33,093 DEBUG   HandlerThread:17220 [system_info.py:probe():199] Probing system done
+2024-02-27 03:27:33,093 DEBUG   HandlerThread:17220 [system_monitor.py:probe():223] {'os': 'Windows-10-10.0.22631-SP0', 'python': '3.9.13', 'heartbeatAt': '2024-02-27T02:27:33.045235', 'startedAt': '2024-02-27T02:27:32.405241', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': 'D:\\GithubProject\\mcv-c6-2024-team3\\Week1\\optimization_task1_1.py', 'codePathLocal': 'optimization_task1_1.py', 'codePath': 'Week1\\optimization_task1_1.py', 'git': {'remote': 'https://github.com/mcv-m6-video/mcv-c6-2024-team3.git', 'commit': 'd63d0db46793b3053965433aba56fa3cd1edfe46'}, 'email': 'pablesky@live.com', 'root': 'D:/GithubProject/mcv-c6-2024-team3', 'host': 'Pablesky', 'username': 'vegag', 'executable': 'C:\\Users\\vegag\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\python.exe', 'cpu_count': 16, 'cpu_count_logical': 32, 'cpu_freq': {'current': 3401.0, 'min': 0.0, 'max': 3401.0}, 'cpu_freq_per_core': [{'current': 3401.0, 'min': 0.0, 'max': 3401.0}], 'disk': {'/': {'total': 1862.9999961853027, 'used': 42.54169845581055}}, 'gpu': 'NVIDIA GeForce RTX 4070', 'gpu_count': 1, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4070', 'memory_total': 12878610432}], 'memory': {'total': 63.943939208984375}}
+2024-02-27 03:27:33,094 INFO    HandlerThread:17220 [system_monitor.py:probe():224] Finished collecting system info
+2024-02-27 03:27:33,094 INFO    HandlerThread:17220 [system_monitor.py:probe():227] Publishing system info
+2024-02-27 03:27:33,094 INFO    HandlerThread:17220 [system_monitor.py:probe():229] Finished publishing system info
+2024-02-27 03:27:33,097 DEBUG   SenderThread:17220 [sender.py:send():382] send: files
+2024-02-27 03:27:33,097 INFO    SenderThread:17220 [sender.py:_save_file():1403] saving file wandb-metadata.json with policy now
+2024-02-27 03:27:33,103 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: python_packages
+2024-02-27 03:27:33,103 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: python_packages
+2024-02-27 03:27:33,103 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:27:33,103 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:27:33,103 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:27:33,261 DEBUG   SenderThread:17220 [sender.py:send():382] send: telemetry
+2024-02-27 03:27:33,682 INFO    wandb-upload_0:17220 [upload_job.py:push():131] Uploaded file C:\Users\vegag\AppData\Local\Temp\tmpjpovrbnqwandb\er49ycqs-wandb-metadata.json
+2024-02-27 03:27:33,909 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_created():271] file/dir created: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:33,909 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_created():271] file/dir created: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\requirements.txt
+2024-02-27 03:27:33,909 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_created():271] file/dir created: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\wandb-metadata.json
+2024-02-27 03:27:35,922 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:37,485 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:27:37,942 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:39,945 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:41,960 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:42,844 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:27:43,982 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:46,004 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:48,010 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:27:48,074 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:27:48,121 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:27:48,121 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:27:48,121 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:27:53,410 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:27:58,454 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:02,135 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:03,128 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:28:03,128 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:28:03,129 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:28:03,460 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:04,156 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:04,157 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\config.yaml
+2024-02-27 03:28:06,171 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:08,191 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:08,710 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:10,219 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:12,238 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:13,788 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:14,266 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:16,290 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:18,123 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:28:18,123 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:28:18,139 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:28:18,297 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:18,814 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:20,319 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:22,343 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:23,889 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:24,365 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:26,381 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:28,395 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:28,964 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:30,407 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:32,423 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:33,057 DEBUG   SystemMonitor:17220 [system_monitor.py:_start():172] Starting system metrics aggregation loop
+2024-02-27 03:28:33,058 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:28:33,137 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:28:33,137 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:28:33,153 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:28:34,036 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:34,453 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:36,471 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:38,499 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:39,102 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:40,501 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:42,518 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:44,207 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:44,547 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:46,562 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:48,149 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:28:48,150 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:28:48,165 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:28:48,574 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:49,325 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:50,589 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:52,604 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:54,434 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:28:54,622 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:56,638 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:58,642 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:28:59,526 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:00,653 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:02,668 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:03,064 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:29:03,159 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:29:03,159 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:29:03,176 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:29:04,617 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:04,690 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:06,711 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:08,733 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:09,763 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:10,748 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:12,763 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:14,766 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:14,885 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:16,775 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:18,167 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:29:18,167 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:29:18,183 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:29:18,798 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:19,937 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:20,819 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:22,843 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:24,864 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:24,997 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:26,882 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:28,893 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:30,111 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:30,914 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:32,939 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:33,065 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:29:33,192 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:29:33,192 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:29:33,192 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:29:34,961 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:35,223 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:36,977 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:38,989 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:40,367 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:41,007 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:43,032 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:45,041 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:45,434 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:47,058 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:48,187 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:29:48,188 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:29:48,203 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:29:49,062 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:50,583 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:51,077 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:53,097 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:55,117 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:55,672 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:29:57,122 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:29:59,142 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:00,777 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:01,161 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:03,077 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:30:03,187 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:03,203 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:30:03,204 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:30:03,219 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:30:05,205 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:05,890 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:07,221 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:09,251 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:10,992 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:11,267 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:13,284 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:15,309 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:16,009 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:17,337 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:18,205 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:30:18,205 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:30:18,235 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:30:19,359 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:21,018 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:21,385 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:23,406 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:25,411 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:26,026 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:27,423 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:29,443 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:31,037 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:31,459 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:33,079 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:30:33,205 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:30:33,206 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:30:33,237 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:30:33,487 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:35,502 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:36,044 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:37,517 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:39,540 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:41,177 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:41,551 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:43,565 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:44,577 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:45,589 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:46,206 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:47,609 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:48,202 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:30:48,202 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:30:48,248 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:30:49,633 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:51,307 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:51,656 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:53,679 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:55,706 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:56,342 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:30:56,728 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:30:58,747 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:00,766 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:01,378 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:02,782 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:03,085 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:31:03,213 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:31:03,213 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:31:03,261 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:31:04,809 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:06,489 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:06,821 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:09,151 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:11,175 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:11,550 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:13,203 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:15,218 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:16,641 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:17,234 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:18,221 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:31:18,221 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:31:18,269 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:31:19,249 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:21,263 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:21,739 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:23,289 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:25,297 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:26,831 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:27,325 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:29,341 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:31,359 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:31,875 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:33,089 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:31:33,231 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:31:33,231 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:31:33,279 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:31:33,389 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:35,417 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:36,978 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:37,433 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:39,451 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:41,459 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:42,012 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:43,484 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:45,506 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:47,168 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:47,512 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:48,246 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:31:48,246 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:31:48,295 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:31:49,520 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:51,534 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:52,310 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:53,548 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:55,564 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:57,357 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:31:57,582 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:31:59,590 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:01,606 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:02,428 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:32:03,097 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:32:03,264 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: stop_status
+2024-02-27 03:32:03,265 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: stop_status
+2024-02-27 03:32:03,302 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:32:03,619 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:05,630 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:06,927 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: partial_history
+2024-02-27 03:32:06,928 DEBUG   SenderThread:17220 [sender.py:send():382] send: history
+2024-02-27 03:32:06,928 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: summary_record
+2024-02-27 03:32:06,929 INFO    SenderThread:17220 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-27 03:32:06,929 DEBUG   SenderThread:17220 [sender.py:send():382] send: telemetry
+2024-02-27 03:32:06,929 DEBUG   SenderThread:17220 [sender.py:send():382] send: exit
+2024-02-27 03:32:06,929 INFO    SenderThread:17220 [sender.py:send_exit():589] handling exit code: 0
+2024-02-27 03:32:06,929 INFO    SenderThread:17220 [sender.py:send_exit():591] handling runtime: 273
+2024-02-27 03:32:06,929 INFO    SenderThread:17220 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-27 03:32:06,930 INFO    SenderThread:17220 [sender.py:send_exit():597] send defer
+2024-02-27 03:32:06,930 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,930 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 0
+2024-02-27 03:32:06,930 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,930 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 0
+2024-02-27 03:32:06,930 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 1
+2024-02-27 03:32:06,930 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,930 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 1
+2024-02-27 03:32:06,930 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,930 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 1
+2024-02-27 03:32:06,930 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 2
+2024-02-27 03:32:06,930 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,930 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 2
+2024-02-27 03:32:06,930 INFO    HandlerThread:17220 [system_monitor.py:finish():203] Stopping system monitor
+2024-02-27 03:32:06,931 DEBUG   SystemMonitor:17220 [system_monitor.py:_start():179] Finished system metrics aggregation loop
+2024-02-27 03:32:06,936 DEBUG   SystemMonitor:17220 [system_monitor.py:_start():183] Publishing last batch of metrics
+2024-02-27 03:32:06,936 INFO    HandlerThread:17220 [interfaces.py:finish():202] Joined cpu monitor
+2024-02-27 03:32:06,937 INFO    HandlerThread:17220 [interfaces.py:finish():202] Joined disk monitor
+2024-02-27 03:32:06,959 INFO    HandlerThread:17220 [interfaces.py:finish():202] Joined gpu monitor
+2024-02-27 03:32:06,959 INFO    HandlerThread:17220 [interfaces.py:finish():202] Joined memory monitor
+2024-02-27 03:32:06,959 INFO    HandlerThread:17220 [interfaces.py:finish():202] Joined network monitor
+2024-02-27 03:32:06,959 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,959 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 2
+2024-02-27 03:32:06,959 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 3
+2024-02-27 03:32:06,959 DEBUG   SenderThread:17220 [sender.py:send():382] send: stats
+2024-02-27 03:32:06,959 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,960 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 3
+2024-02-27 03:32:06,960 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,960 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 3
+2024-02-27 03:32:06,960 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 4
+2024-02-27 03:32:06,960 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,960 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 4
+2024-02-27 03:32:06,960 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,960 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 4
+2024-02-27 03:32:06,960 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 5
+2024-02-27 03:32:06,960 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,960 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 5
+2024-02-27 03:32:06,961 DEBUG   SenderThread:17220 [sender.py:send():382] send: summary
+2024-02-27 03:32:06,961 INFO    SenderThread:17220 [sender.py:_save_file():1403] saving file wandb-summary.json with policy end
+2024-02-27 03:32:06,961 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,961 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 5
+2024-02-27 03:32:06,961 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 6
+2024-02-27 03:32:06,961 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:06,961 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 6
+2024-02-27 03:32:06,961 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:06,961 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 6
+2024-02-27 03:32:06,963 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:32:07,140 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 7
+2024-02-27 03:32:07,140 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:07,140 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 7
+2024-02-27 03:32:07,140 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:07,140 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 7
+2024-02-27 03:32:07,648 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:07,648 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\config.yaml
+2024-02-27 03:32:07,649 INFO    Thread-16 :17220 [dir_watcher.py:_on_file_created():271] file/dir created: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\wandb-summary.json
+2024-02-27 03:32:07,936 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-27 03:32:09,288 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 8
+2024-02-27 03:32:09,288 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: poll_exit
+2024-02-27 03:32:09,288 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:09,289 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 8
+2024-02-27 03:32:09,289 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:09,289 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 8
+2024-02-27 03:32:09,289 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 9
+2024-02-27 03:32:09,289 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:09,289 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 9
+2024-02-27 03:32:09,289 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:09,289 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 9
+2024-02-27 03:32:09,289 INFO    SenderThread:17220 [dir_watcher.py:finish():358] shutting down directory watcher
+2024-02-27 03:32:09,654 INFO    SenderThread:17220 [dir_watcher.py:_on_file_modified():288] file/dir modified: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:09,654 INFO    SenderThread:17220 [dir_watcher.py:finish():388] scan: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files
+2024-02-27 03:32:09,655 INFO    SenderThread:17220 [dir_watcher.py:finish():402] scan save: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\config.yaml config.yaml
+2024-02-27 03:32:09,655 INFO    SenderThread:17220 [dir_watcher.py:finish():402] scan save: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log output.log
+2024-02-27 03:32:09,656 INFO    SenderThread:17220 [dir_watcher.py:finish():402] scan save: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\requirements.txt requirements.txt
+2024-02-27 03:32:09,657 INFO    SenderThread:17220 [dir_watcher.py:finish():402] scan save: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\wandb-metadata.json wandb-metadata.json
+2024-02-27 03:32:09,658 INFO    SenderThread:17220 [dir_watcher.py:finish():402] scan save: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\wandb-summary.json wandb-summary.json
+2024-02-27 03:32:09,660 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 10
+2024-02-27 03:32:09,660 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:09,661 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 10
+2024-02-27 03:32:09,662 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:09,662 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 10
+2024-02-27 03:32:09,662 INFO    SenderThread:17220 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-27 03:32:09,952 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-27 03:32:09,952 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: poll_exit
+2024-02-27 03:32:10,172 INFO    wandb-upload_2:17220 [upload_job.py:push():131] Uploaded file D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\requirements.txt
+2024-02-27 03:32:10,174 INFO    wandb-upload_3:17220 [upload_job.py:push():131] Uploaded file D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\wandb-summary.json
+2024-02-27 03:32:10,174 INFO    wandb-upload_1:17220 [upload_job.py:push():131] Uploaded file D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\output.log
+2024-02-27 03:32:10,176 INFO    wandb-upload_0:17220 [upload_job.py:push():131] Uploaded file D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\files\config.yaml
+2024-02-27 03:32:10,391 INFO    Thread-15 :17220 [sender.py:transition_state():617] send defer: 11
+2024-02-27 03:32:10,391 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:10,391 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 11
+2024-02-27 03:32:10,391 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:10,391 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 11
+2024-02-27 03:32:10,391 INFO    SenderThread:17220 [file_pusher.py:join():178] waiting for file pusher
+2024-02-27 03:32:10,392 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 12
+2024-02-27 03:32:10,392 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:10,392 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 12
+2024-02-27 03:32:10,392 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:10,392 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 12
+2024-02-27 03:32:10,392 INFO    SenderThread:17220 [file_stream.py:finish():595] file stream finish called
+2024-02-27 03:32:10,962 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-27 03:32:15,277 INFO    SenderThread:17220 [file_stream.py:finish():599] file stream finish is done
+2024-02-27 03:32:15,277 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 13
+2024-02-27 03:32:15,277 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: poll_exit
+2024-02-27 03:32:15,277 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:15,278 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 13
+2024-02-27 03:32:15,278 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: status_report
+2024-02-27 03:32:15,278 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:15,278 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 13
+2024-02-27 03:32:15,278 INFO    SenderThread:17220 [sender.py:transition_state():617] send defer: 14
+2024-02-27 03:32:15,278 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: defer
+2024-02-27 03:32:15,278 INFO    HandlerThread:17220 [handler.py:handle_request_defer():172] handle defer: 14
+2024-02-27 03:32:15,278 DEBUG   SenderThread:17220 [sender.py:send():382] send: final
+2024-02-27 03:32:15,278 DEBUG   SenderThread:17220 [sender.py:send():382] send: footer
+2024-02-27 03:32:15,278 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: defer
+2024-02-27 03:32:15,278 INFO    SenderThread:17220 [sender.py:send_request_defer():613] handle sender defer: 14
+2024-02-27 03:32:15,279 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: poll_exit
+2024-02-27 03:32:15,279 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: poll_exit
+2024-02-27 03:32:15,280 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: internal_messages
+2024-02-27 03:32:15,280 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: server_info
+2024-02-27 03:32:15,280 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: get_summary
+2024-02-27 03:32:15,280 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: sampled_history
+2024-02-27 03:32:15,280 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: server_info
+2024-02-27 03:32:15,280 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: job_info
+2024-02-27 03:32:15,424 DEBUG   SenderThread:17220 [sender.py:send_request():409] send_request: job_info
+2024-02-27 03:32:15,424 DEBUG   HandlerThread:17220 [handler.py:handle_request():146] handle_request: shutdown
+2024-02-27 03:32:15,425 INFO    HandlerThread:17220 [handler.py:finish():869] shutting down handler
+2024-02-27 03:32:16,286 INFO    WriterThread:17220 [datastore.py:close():296] close: D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240227_032732-rqs3kbzi\run-rqs3kbzi.wandb
+2024-02-27 03:32:16,430 INFO    SenderThread:17220 [sender.py:finish():1572] shutting down sender
+2024-02-27 03:32:16,430 INFO    SenderThread:17220 [file_pusher.py:finish():172] shutting down file pusher
+2024-02-27 03:32:16,430 INFO    SenderThread:17220 [file_pusher.py:join():178] waiting for file pusher

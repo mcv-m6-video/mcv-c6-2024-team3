@@ -128,11 +128,17 @@ def voc_eval(preds, gt, ovthresh=0.5):
     ap = voc_ap(rec, prec)
     iou = np.mean(iou)
 
-    return ap
+    return ap, rec, prec
 
 def mAP(gt, preds, N=10):
     aps = []
+    recs = []
+    precs = []
     for _ in range(N):
-        aps.append(voc_eval(preds, gt))
-    return np.mean(aps)
+        ap, rec, prec = voc_eval(preds, gt)
+        aps.append(ap)
+        recs.append(rec)
+        precs.append(prec)
+
+    return np.mean(aps), np.mean(recs), np.mean(precs)
         
