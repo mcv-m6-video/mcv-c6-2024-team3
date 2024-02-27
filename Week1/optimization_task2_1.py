@@ -1,7 +1,7 @@
 import wandb
 
 from task1_2 import *
-from task1_1 import BackgroundRemoval
+from task2_1 import BackgroundRemoval
 from evaluation import *
 
 from tqdm import tqdm
@@ -18,6 +18,12 @@ sweep_config = {
 
         'kernel_size': {
             'values': [3, 5, 7, 9, 11]
+        },
+
+        'rho' : {
+            'distribution': 'uniform',
+            'max': 1.0,
+            'min': 0.0
         }
 
     }
@@ -38,7 +44,7 @@ def train(config=None):
         outFrames = 'framesOriginal'
 
         kernel_number = config.kernel_size
-        modelo = BackgroundRemoval(inFrames, outFrames, alpha = config.alpha, morph = True, kernel_size=(kernel_number, kernel_number))
+        modelo = BackgroundRemoval(inFrames, outFrames, alpha = config.alpha, ro = config.rho, morph = True, kernel_size=(kernel_number, kernel_number))
 
         modelo.train()
         modelo.test()
@@ -48,7 +54,7 @@ def train(config=None):
         classes = ['car'] # The other class is bike
         bbox_info = read_ground_truth(xml_file, classes, n_frames)
 
-        outputFolderModel = 'framesResult/'
+        outputFolderModel = 'framesResult_adaptive/'
         
         mapScore = evaluate(outputFolderModel, bbox_info)
 
@@ -56,5 +62,5 @@ def train(config=None):
 
 
 if __name__ == '__main__':
-    sweep_id = wandb.sweep(sweep_config, project="OptimizationC6_Task1_1")
+    sweep_id = wandb.sweep(sweep_config, project="OptimizationC6_Task2_1")
     wandb.agent(sweep_id, function=train, count=200)
