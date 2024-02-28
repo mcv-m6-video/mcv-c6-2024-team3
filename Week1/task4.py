@@ -190,21 +190,8 @@ if __name__ == '__main__':
     modelo = BackgroundRemoval(inFrames, outFrames, morph = True, kernel_size=(11,11))
 
     # modelo.train_unoptimized()
-    # modelo.train()
-    # modelo.test()
-
-    n_frames = len(os.listdir(outFrames))
-    xml_file = 'ai_challenge_s03_c010-full_annotation.xml'
-    classes = ['car'] # The other class is bike
-    bbox_info = read_ground_truth(xml_file, classes, n_frames)
-
-    outputFolderModel = 'framesResult_adaptiveBGR/'
-    
-    kernel_open = 3
-    kernel_close = 30
-    mapScore, precScore, recScore = evaluate(outputFolderModel, bbox_info, kernel_open, kernel_close)
-
-    print('map', mapScore, 'precision', precScore, 'recall', recScore)
+    modelo.train()
+    modelo.test()
 
 
 

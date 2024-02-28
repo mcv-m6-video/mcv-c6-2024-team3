@@ -2,7 +2,7 @@ from PIL import Image
 import os
 
 # Path to the folder containing images
-folder_path = "./after_morph_adaptive"
+folder_path = "./videoFinal"
 
 # Get a list of image filenames in the folder
 image_files = [f for f in os.listdir(folder_path) if f.endswith(('.jpg', '.png', '.gif'))]
@@ -22,6 +22,7 @@ print(len(image_files))
 for filename in image_files:
     image_path = os.path.join(folder_path, filename)
     img = Image.open(image_path)
+    img = img.resize((1920//4, 1080//4))
     images.append(img)
 
 print("created")

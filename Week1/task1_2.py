@@ -139,12 +139,15 @@ def get_bbox_predictions(path, frame_list):
 
         frame = cv2.imread(path + frame_list[frameNumber], cv2.IMREAD_COLOR)
 
+        originalFrame = cv2.imread('framesOriginal/' + frame_list[frameNumber], cv2.IMREAD_COLOR)
         for bbox in bbox_pred_info:
             xtl, ytl, xbr, ybr = bbox
             xtl, ytl, xbr, ybr = int(xtl), int(ytl), int(xbr), int(ybr)
-            cv2.rectangle(frame, (xtl, ytl), (xbr, ybr), (0, 0, 255), 2)
-        cv2.imshow('frame', frame)
+            cv2.rectangle(originalFrame, (xtl, ytl), (xbr, ybr), (0, 0, 255), 2)
+        cv2.imshow('frame', originalFrame)
         cv2.waitKey(1)
+
+        cv2.imwrite('videoFinal/' + frame_list[frameNumber], originalFrame)
 
 
 def get_bbox_from_single_image(image, kernel_open, kernel_close):
@@ -265,11 +268,11 @@ if __name__ == "__main__":
         draw_bbox(path, frames_list, frameNumber, bbox_info[frameNumber], get_bbox_from_single_image(image))
     '''
 
-    '''
-    path_results = 'framesResult_adaptive/'
+    
+    path_results = 'framesResult_adaptiveBGR/'
     frames_list_results = sorted(os.listdir(path_results))
     bbox_info_predictions = get_bbox_predictions(path_results, frames_list_results)
-    '''
+    
     
 
 
