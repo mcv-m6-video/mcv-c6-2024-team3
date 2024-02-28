@@ -12,8 +12,9 @@ The code and data is structured as follows:
         ├── task4.py               
         ├── taskGMM.py       
         ├── evaluation.py                  
-        ├── optimization_task1_1.py                   
-        └── optimization_task2_1.py      
+        ├── optimization_task1_1.py  
+        ├── optimization_task2_1.py
+        └── optimization_task4.py      
 
 ## Running the code
 Each task corresponds to a separate file named after the task. To execute them, simply specify the desired hyperparameter values within the "main" section of the respective file and run it using Python 3, as demonstrated below:
