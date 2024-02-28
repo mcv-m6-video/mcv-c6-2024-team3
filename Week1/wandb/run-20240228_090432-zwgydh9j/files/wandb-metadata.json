@@ -1,0 +1,53 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.9.13",
+    "heartbeatAt": "2024-02-28T08:04:33.461596",
+    "startedAt": "2024-02-28T08:04:32.806594",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "D:\\GithubProject\\mcv-c6-2024-team3\\Week1\\optimization_task1_1.py",
+    "codePathLocal": "optimization_task1_1.py",
+    "codePath": "Week1\\optimization_task1_1.py",
+    "git": {
+        "remote": "https://github.com/mcv-m6-video/mcv-c6-2024-team3.git",
+        "commit": "042ead694e4155ba9cd8258da72e4dde3b2da989"
+    },
+    "email": "pablesky@live.com",
+    "root": "D:/GithubProject/mcv-c6-2024-team3",
+    "host": "Pablesky",
+    "username": "vegag",
+    "executable": "C:\\Users\\vegag\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.9_qbz5n2kfra8p0\\python.exe",
+    "cpu_count": 16,
+    "cpu_count_logical": 32,
+    "cpu_freq": {
+        "current": 3401.0,
+        "min": 0.0,
+        "max": 3401.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3401.0,
+            "min": 0.0,
+            "max": 3401.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 1862.9999961853027,
+            "used": 43.6422119140625
+        }
+    },
+    "gpu": "NVIDIA GeForce RTX 4070",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce RTX 4070",
+            "memory_total": 12878610432
+        }
+    ],
+    "memory": {
+        "total": 63.943939208984375
+    }
+}

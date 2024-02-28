@@ -166,7 +166,7 @@ class BackgroundRemoval:
             cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
 
     
-    def fast_test(self, ro, alpha, kernel_size):
+    def fast_test(self, ro, alpha, kernel_size = None):
 
         self.alpha = alpha
         self.ro = ro
@@ -177,6 +177,7 @@ class BackgroundRemoval:
                 shutil.rmtree(outputFolder)
 
         os.mkdir(outputFolder)
+        
 
         for i in tqdm(range(0, self.numFrames)):
             originalFrame = cv2.imread(self.framesOutPath + '/' + self.listFrames[i], COLOR_CHANGES[self.colourSpace])

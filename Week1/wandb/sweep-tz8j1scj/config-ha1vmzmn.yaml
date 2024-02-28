@@ -1,0 +1,8 @@
+wandb_version: 1
+
+alpha:
+  value: 12.38385552298234
+kernel_close:
+  value: 11
+kernel_open:
+  value: 5

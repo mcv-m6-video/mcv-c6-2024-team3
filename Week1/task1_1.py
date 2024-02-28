@@ -161,7 +161,7 @@ class BackgroundRemoval:
             #result = cv2.cvtColor(result, cv2.COLOR_GRAY2BGR)  
             cv2.imwrite(outputFolder + '/frame' + str(i).zfill(5) + '.png', result)
 
-    def fast_test(self, alpha, kernel_size):
+    def fast_test(self, alpha, kernel_size = None):
 
         self.alpha = alpha
         self.kernel_size = kernel_size
