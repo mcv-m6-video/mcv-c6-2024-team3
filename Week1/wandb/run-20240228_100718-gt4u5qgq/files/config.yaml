@@ -7,7 +7,7 @@ _wandb:
     cli_version: 0.16.3
     is_jupyter_run: false
     is_kaggle_kernel: false
-    start_time: 1709110960.8384
+    start_time: 1709111238.844152
     t:
       1:
       - 55
@@ -25,10 +25,10 @@ _wandb:
       13: windows-amd64
 alpha:
   desc: null
-  value: 14.543719808040784
+  value: 6.895504359178914
 kernel_close:
   desc: null
-  value: 5
+  value: 7
 kernel_open:
   desc: null
-  value: 11
+  value: 5

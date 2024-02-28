@@ -22,7 +22,7 @@ sweep_config = {
         },
 
         'kernel_close': {
-            'values': [3, 5, 7, 9, 11]
+            'values': [15, 20, 25, 30, 35, 40]
         },
 
         'rho' : {
