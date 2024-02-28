@@ -9,4 +9,5 @@ Week1/framesResult_adaptiveBGR/
 Week1/videoFinal/
 *.mp4
 *.pkl
-
+__pycache__/
+wandb/
