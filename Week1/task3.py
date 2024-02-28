@@ -1,13 +1,8 @@
 import cv2
-import os
-import shutil
 import numpy as np
-from tqdm import tqdm
 
 from task1_2 import *
 from evaluation import *
-
-
 import matplotlib.pyplot as plt
 
 
@@ -128,76 +123,92 @@ def get_large_connected_components(binary_mask, min_area_threshold):
     )
 
     # Filter out the large connected components based on area
+    large_components = []
     bounding_boxes = []
     for label in range(1, num_labels):  # Skip background label 0
         area = stats[label, cv2.CC_STAT_AREA]
-        if area >= min_area_threshold:
+        if area >= min_area_threshold and area < 200_000:
+            large_components.append(labels == label)
             # Get the bounding box coordinates
             x, y, w, h = cv2.boundingRect((labels == label).astype(np.uint8))
-            bounding_boxes.append((x, y, x + w, y + h))
+            bounding_boxes.append([x, y, x + w, y + h])
 
     return bounding_boxes
 
 
-mask_path = "/home/georg/Downloads/BSUV_binary.mp4"
-vid_path = "./vdo.avi"
-cap = cv2.VideoCapture(mask_path)
-vid_cap = cv2.VideoCapture(vid_path)
-# Parameters
-threshold_value = 200
+# Create VideoCapture object
+
+roi = cv2.imread("roi.jpg", cv2.IMREAD_GRAYSCALE)
 min_area_threshold = 1000  # Adjust as needed
-pred_bboxes = []
 xml_file = "ai_challenge_s03_c010-full_annotation.xml"
 classes = ["car"]
 gt_bboxes = read_ground_truth(xml_file, classes, 2141)
 
-# Process each frame
 
-# Create VideoWriter object to save output video
-output_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-output_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-fps = int(cap.get(cv2.CAP_PROP_FPS))
-fourcc = cv2.VideoWriter_fourcc(*"mp4v")
-out = cv2.VideoWriter("output_sota.mp4", fourcc, fps, (output_width, output_height))
+for model in ["MOG2", "KNN", "GMG", "GSOC", "LSBP", "CNT"]:
+    print(f"### {model} ###")
+    if model == "MOG2":
+        background_subtractor = cv2.createBackgroundSubtractorMOG2(detectShadows=False)
+    elif model == "KNN":
+        background_subtractor = cv2.createBackgroundSubtractorKNN(detectShadows=False)
+    elif model == "CNT":
+        background_subtractor = cv2.bgsegm.createBackgroundSubtractorCNT()
+    elif model == "GMG":
+        background_subtractor = cv2.bgsegm.createBackgroundSubtractorGMG()
+    elif model == "GSOC":
+        background_subtractor = cv2.bgsegm.createBackgroundSubtractorGSOC()
+    elif model == "LSBP":
+        background_subtractor = cv2.bgsegm.createBackgroundSubtractorLSBP()
+    else:
+        raise ValueError(
+            "Invalid method. Please choose from 'MOG2', 'KNN', 'CNT', 'GMG', 'GSOC', 'LSBP'."
+        )
+    cap = cv2.VideoCapture("/home/georg/projects/mcv-c6-2024-team3/Week1/vdo.avi")
+    # Create VideoWriter object to save output video
+    output_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    output_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    fps = int(cap.get(cv2.CAP_PROP_FPS))
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    out = cv2.VideoWriter(f"{model}.mp4", fourcc, fps, (output_width, output_height))
 
-frame_counter = 0
-while True:
-    ret, mask = cap.read()
-    if not ret:
-        break
-    _, frame = vid_cap.read()
+    pred_bboxes = []
+    frame_counter = 0
+    while True:
+        # Read a frame from the video
+        ret, frame = cap.read()
+        if not ret:
+            break
 
-    # Convert frame to grayscale
-    gray = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)
+        # Apply background subtraction
+        fg_mask = background_subtractor.apply(frame)
+        fg_mask = cv2.bitwise_and(fg_mask, roi)
+        fg_mask = cv2.morphologyEx(
+            fg_mask,
+            cv2.MORPH_OPEN,
+            cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5)),
+        )
 
-    # Threshold the frame
-    _, binary_mask = cv2.threshold(gray, threshold_value, 255, cv2.THRESH_BINARY)
+        bounding_boxes = get_large_connected_components(fg_mask, min_area_threshold)
+        pred_bboxes.append(bounding_boxes)
+        # Overlay bounding boxes on the frame
 
-    # Get bounding boxes of larger connected components
-    bounding_boxes = get_large_connected_components(binary_mask, min_area_threshold)
-    pred_bboxes.append(bounding_boxes)
+        for bbox in bounding_boxes:
+            x1, y1, x2, y2 = bbox
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
+        for bbox in gt_bboxes[frame_counter]:
+            x1, y1, x2, y2 = [int(coord) for coord in bbox]
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
-    for bbox in bounding_boxes:
-        x1, y1, x2, y2 = bbox
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
-    for bbox in gt_bboxes[frame_counter]:
-        x1, y1, x2, y2 = [int(coord) for coord in bbox]
-        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        # Write the frame to the output video
+        out.write(frame)
+        frame_counter += 1
 
-    # Write the frame to the output video
-    out.write(frame)
-    frame_counter += 1
+    # Release VideoCapture and VideoWriter objects
+    cap.release()
+    out.release()
 
-
-# Release VideoCapture and close all OpenCV windows
-cap.release()
-out.release()
-
-
-n_frames = len(pred_bboxes)
-print(n_frames)
-rec, prec, ap = voc_eval(preds=pred_bboxes, gt=gt_bboxes)
-print(rec, prec, ap)
-plot_prec_recall_curve(
-    prec=prec, rec=rec, title=f"Precision-Recall BSUV-Net", save_name=f"BSUV-Net.png"
-)
+    rec, prec, ap = voc_eval(preds=pred_bboxes, gt=gt_bboxes)
+    print(rec, prec, ap)
+    plot_prec_recall_curve(
+        prec=prec, rec=rec, title=f"Precision-Recall {model}", save_name=f"{model}.png"
+    )
