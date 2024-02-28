@@ -1,0 +1,14 @@
+The folder already exists, reading the content.
+Using 535 frames to train the model.
+
+
+
+
+
+
+
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 535/535 [00:15<00:00, 34.78it/s]
+Traceback (most recent call last):
+  File "D:\GithubProject\mcv-c6-2024-team3\Week1\optimization_task4.py", line 62, in train
+    modelo.fast_test(alpha=config.alpha, ro = config.rho, colorSpace=config.colorSpace)
+TypeError: fast_test() got an unexpected keyword argument 'colorSpace'

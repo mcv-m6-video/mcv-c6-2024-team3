@@ -1,0 +1,12 @@
+wandb_version: 1
+
+alpha:
+  value: 5.42603958069015
+colorSpace:
+  value: bgr
+kernel_close:
+  value: 20
+kernel_open:
+  value: 5
+rho:
+  value: 0.09198413115652666

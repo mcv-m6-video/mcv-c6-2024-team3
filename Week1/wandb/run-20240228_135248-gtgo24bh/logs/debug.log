@@ -1,0 +1,27 @@
+2024-02-28 13:52:48,616 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Current SDK version is 0.16.3
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Configure stats pid to 38652
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Loading settings from C:\Users\vegag\.config\wandb\settings
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Loading settings from D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\settings
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Loading settings from environment variables: {'project': 'OptimizationC6_Task4v1', 'entity': 'c3-uab-mcv', 'root_dir': 'D:\\GithubProject\\mcv-c6-2024-team3\\Week1', 'sweep_id': 'wdsg3ehz', 'run_id': 'gtgo24bh', 'sweep_param_path': 'D:\\GithubProject\\mcv-c6-2024-team3\\Week1\\wandb\\sweep-wdsg3ehz\\config-gtgo24bh.yaml'}
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'Week1\\optimization_task4.py', 'program_abspath': 'D:\\GithubProject\\mcv-c6-2024-team3\\Week1\\optimization_task4.py', 'program': 'D:\\GithubProject\\mcv-c6-2024-team3\\Week1\\optimization_task4.py'}
+2024-02-28 13:52:48,617 INFO    Thread-10 :38652 [wandb_init.py:_log_setup():526] Logging user logs to D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240228_135248-gtgo24bh\logs\debug.log
+2024-02-28 13:52:48,618 INFO    Thread-10 :38652 [wandb_init.py:_log_setup():527] Logging internal logs to D:\GithubProject\mcv-c6-2024-team3\Week1\wandb\run-20240228_135248-gtgo24bh\logs\debug-internal.log
+2024-02-28 13:52:48,618 INFO    Thread-10 :38652 [wandb_init.py:init():566] calling init triggers
+2024-02-28 13:52:48,618 INFO    Thread-10 :38652 [wandb_init.py:init():573] wandb.init called with sweep_config: {'alpha': 8.865725878665927, 'colorSpace': 'bgr', 'kernel_close': 40, 'kernel_open': 3, 'rho': 0.11721997355592416}
+config: {}
+2024-02-28 13:52:48,618 INFO    Thread-10 :38652 [wandb_init.py:init():616] starting backend
+2024-02-28 13:52:48,618 INFO    Thread-10 :38652 [wandb_init.py:init():620] setting up manager
+2024-02-28 13:52:48,623 INFO    Thread-10 :38652 [backend.py:_multiprocessing_setup():105] multiprocessing start_methods=spawn, using: spawn
+2024-02-28 13:52:48,627 INFO    Thread-10 :38652 [wandb_init.py:init():628] backend started and connected
+2024-02-28 13:52:48,636 INFO    Thread-10 :38652 [wandb_run.py:_config_callback():1343] config_cb None None {'alpha': 8.865725878665927, 'colorSpace': 'bgr', 'kernel_close': 40, 'kernel_open': 3, 'rho': 0.11721997355592416}
+2024-02-28 13:52:48,637 INFO    Thread-10 :38652 [wandb_init.py:init():720] updated telemetry
+2024-02-28 13:52:48,679 INFO    Thread-10 :38652 [wandb_init.py:init():753] communicating run to backend with 90.0 second timeout
+2024-02-28 13:52:49,103 INFO    Thread-10 :38652 [wandb_run.py:_on_init():2262] communicating current version
+2024-02-28 13:52:49,204 INFO    Thread-10 :38652 [wandb_run.py:_on_init():2271] got version response 
+2024-02-28 13:52:49,204 INFO    Thread-10 :38652 [wandb_init.py:init():804] starting run threads in backend
+2024-02-28 13:52:49,415 INFO    Thread-10 :38652 [wandb_run.py:_console_start():2241] atexit reg
+2024-02-28 13:52:49,415 INFO    Thread-10 :38652 [wandb_run.py:_redirect():2096] redirect: wrap_raw
+2024-02-28 13:52:49,415 INFO    Thread-10 :38652 [wandb_run.py:_redirect():2161] Wrapping output streams.
+2024-02-28 13:52:49,415 INFO    Thread-10 :38652 [wandb_run.py:_redirect():2186] Redirects installed.
+2024-02-28 13:52:49,416 INFO    Thread-10 :38652 [wandb_init.py:init():847] run started, returning control to user process

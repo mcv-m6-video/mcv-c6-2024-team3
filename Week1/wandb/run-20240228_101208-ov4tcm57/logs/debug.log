@@ -25,3 +25,10 @@ config: {}
 2024-02-28 10:12:09,218 INFO    Thread-810:8796 [wandb_run.py:_redirect():2161] Wrapping output streams.
 2024-02-28 10:12:09,218 INFO    Thread-810:8796 [wandb_run.py:_redirect():2186] Redirects installed.
 2024-02-28 10:12:09,218 INFO    Thread-810:8796 [wandb_init.py:init():847] run started, returning control to user process
+2024-02-28 10:16:32,900 INFO    Thread-810:8796 [wandb_run.py:_finish():1970] finishing run c3-uab-mcv/OptimizationC6_Task1_1v3/ov4tcm57
+2024-02-28 10:16:32,900 INFO    Thread-810:8796 [wandb_run.py:_atexit_cleanup():2210] got exitcode: 0
+2024-02-28 10:16:32,900 INFO    Thread-810:8796 [wandb_run.py:_restore():2193] restore
+2024-02-28 10:16:32,901 INFO    Thread-810:8796 [wandb_run.py:_restore():2199] restore done
+2024-02-28 10:16:36,724 INFO    Thread-810:8796 [wandb_run.py:_footer_history_summary_info():3866] rendering history
+2024-02-28 10:16:36,724 INFO    Thread-810:8796 [wandb_run.py:_footer_history_summary_info():3898] rendering summary
+2024-02-28 10:16:36,727 INFO    Thread-810:8796 [wandb_run.py:_footer_sync_info():3825] logging synced files

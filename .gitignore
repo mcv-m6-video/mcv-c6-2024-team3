@@ -5,6 +5,7 @@ ai_challenge_s03_c010-full_annotation.xml
 Week1/framesOriginal/
 Week1/framesResult/
 Week1/framesResult_adaptive/
+Week1/framesResult_adaptiveBGR/
 
 *.mp4
 *.pkl
