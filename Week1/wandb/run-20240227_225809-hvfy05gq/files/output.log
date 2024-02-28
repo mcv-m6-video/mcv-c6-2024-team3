@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "D:\GithubProject\mcv-c6-2024-team3\Week1\optimization_task1_1.py", line 46, in train
-    modelo.fast_test(alpha=config.alpha)
-TypeError: fast_test() missing 1 required positional argument: 'kernel_size'
