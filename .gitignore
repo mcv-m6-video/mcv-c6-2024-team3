@@ -5,7 +5,7 @@ ai_challenge_s03_c010-full_annotation.xml
 Week1/framesOriginal/
 Week1/framesResult/
 Week1/framesResult_adaptive/
-Week1/framesResult_adaptiveBGR/
+Week1/framesResult_adaptiveBGR
 Week1/videoFinal/
 *.mp4
 *.pkl
@@ -13,3 +13,4 @@ Week1/videoFinal/
 __pycache__/
 wandb/
 AICity_data_S04_C016/
+Week2/video_frames/
