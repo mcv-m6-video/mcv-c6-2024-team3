@@ -14,3 +14,4 @@ __pycache__/
 wandb/
 AICity_data_S04_C016/
 Week2/video_frames/
+yolov9/
