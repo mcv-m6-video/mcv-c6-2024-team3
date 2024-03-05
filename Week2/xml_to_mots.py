@@ -29,7 +29,7 @@ def read_ground_truth(xml_file, classes):
                         parked = True
                         break
                 if not parked:
-                    frame = int(box.attrib['frame'])
+                    frame = int(box.attrib['frame'])+1
                     if frame not in dict_frames:
                         dict_frames[frame] = []
                     xtl = int(float(box.attrib['xtl']))
@@ -59,3 +59,5 @@ if __name__ == "__main__":
         for frame, values in ordered_dict.items():
             for value in values:
                 file.write(f"{str(value).strip('[]')}\n")
+    
+    print('Finished successfully!')
