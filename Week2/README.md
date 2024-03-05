@@ -1,4 +1,4 @@
-# Week 1: Background Estimation
+# Week 1: Video Surveillance for Road Traffic Monitoring
 
 ## Folder structure 
 The code of the tasks and data is structured as follows:
