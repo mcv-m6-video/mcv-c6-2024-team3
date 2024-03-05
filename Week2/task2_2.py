@@ -25,7 +25,7 @@ TO TAKE INTO ACCOUNT:
 
 class KalmanFiltering:
 
-    def __init__(self, pathDets, pathImgs,pathOutput,w = 1920, h = 1080, num_files = 0, display = False, ini_0 = True, classes = [0,1,2,3,5,7]):
+    def __init__(self, pathDets, pathImgs,pathOutput,w = 1920, h = 1080, num_files = 0, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5):
         self.pathDets = pathDets
         self.pathImgs = pathImgs
         self.pathOutout = pathOutput
@@ -35,6 +35,7 @@ class KalmanFiltering:
         self.num_files = num_files
         self.ini_0 = ini_0
         self.classes = classes
+        self.conf_thr = conf_thr
         self.detections_sort = self.yolo2sort()
         self.detection_mot = self.yolo2mot()
 
@@ -56,12 +57,12 @@ class KalmanFiltering:
                     elems = [float(elem) for elem in line.split()]
                     #now we supose the name of the file is the image id
                     cat = elems[0]
-                    if cat in self.classes:
+                    conf = elems[5]
+                    if cat in self.classes and conf >= self.conf_thr:
                         x1 = math.floor((elems[1] - elems[3]/2) * self.im_width) # int to make it an actual pixel position
                         y1 = math.floor((elems[2] - elems[4]/2) * self.im_height)
                         x2 = math.floor((elems[1] + elems[3]/2) * self.im_width)
                         y2 = math.floor((elems[2] + elems[4]/2) * self.im_height)
-
 
                         # new format [frame, class, x1, y1, x2,y2]
                         sort_detecs.append([frame_real, cat, x1, y1, x2, y2])
@@ -83,15 +84,15 @@ class KalmanFiltering:
                 for line in file:
                     elems = [float(elem) for elem in line.split()]
                     cat = elems[0]
-                    if cat in self.classes:
-                        x, y, w, h = elems[1:5]
+                    if cat in self.classes and elems[5] >= self.conf_thr:
+                        x, y, w, h, conf = elems[1:6]
                         bb_left = x * self.im_width - w * self.im_width / 2
                         bb_top = y * self.im_height - h * self.im_height / 2
                         bb_width = w * self.im_width
                         bb_height = h * self.im_height
 
                         # Output: frame, id, bb_left, bb_top, bb_width, bb_height, conf, -1, -1, -1
-                        mot_detecs.append([frame_real, -1, bb_left, bb_top, bb_width, bb_height, 1, -1, -1, -1])
+                        mot_detecs.append([frame_real, -1, bb_left, bb_top, bb_width, bb_height, conf, -1, -1, -1])
         return np.array(mot_detecs)
     
 
@@ -168,7 +169,7 @@ class KalmanFiltering:
         # detections need to be a .npy in mot challenge format
         # a bit useless step but bring save the detections to npy.
         np.save('detections_mot.npy', self.detection_mot)
-        deep_sort_run(self.pathImgs, "./detections_mot.npy", self.pathOutout + "/tracking_DeepSort.txt", min_confidence = 0.3, nn_budget = 100, display = self.display, nms_max_overlap=0.7, min_detection_height=30, max_cosine_distance=0.2)
+        deep_sort_run(self.pathImgs, "./detections_mot.npy", self.pathOutout + "/tracking_DeepSort.txt", min_confidence = self.conf_thr, nn_budget = 100, display = self.display, nms_max_overlap=0.7, min_detection_height=30, max_cosine_distance=0.2)
         end_time = time.time()
         total_time = end_time-start_time
         print("Total Tracking took: %.3f for %d frames or %.1f FPS"%(total_time,self.num_files,self.num_files/total_time))
@@ -184,10 +185,10 @@ if __name__ == '__main__':
     image = cv2.imread(path_imgs + "/frame00000.png")
     files = os.listdir(path_imgs)
     num_files = len(files)
-    
+
 
     # Get the height and width
     h, w, _ = image.shape
-    tracking = KalmanFiltering(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7])
+    tracking = KalmanFiltering(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5)
     tracking.DeepSORT()
-    #tracking.SORT()
+    tracking.SORT()
