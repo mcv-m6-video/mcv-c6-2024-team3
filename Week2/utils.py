@@ -20,7 +20,7 @@ def save_frames(video_path, output_folder):
     # While there are frames to read
     while success:
         # Save the frame
-        cv2.imwrite(os.path.join(output_folder, f'{str(count).zfill(5)}.png'), image)
+        cv2.imwrite(os.path.join(output_folder, 'frame' + f'{str(count).zfill(5)}.png'), image)
         # Read the next frame
         success, image = video.read()
         # Increase the counter
