@@ -1,3 +1,5 @@
+# python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/yolov9-c.pt --conf 0.7 --source ../Week2/S01_c001/ --device 0
+
 from __future__ import print_function
 from sort import Sort
 import time
@@ -10,7 +12,7 @@ import matplotlib.patches as patches
 from IPython import display as dp
 from skimage import io
 import re
-from deep_sort_app import run as deep_sort_run
+from deep_sort_app_v2 import run as deep_sort_run
 
 
 
@@ -179,10 +181,11 @@ class KalmanFiltering:
 
 if __name__ == '__main__':
     # Read detections - one file for each image
-    det_path = './data_yolo/dets'
-    path_imgs = './data_yolo/images'
-    path_output = './tracking'
+    det_path = '../yolov9/runs/detect/S01_c001/labels'
+    path_imgs = 'S01_c001'
+    path_output = './trackingS01_c001'
     image = cv2.imread(path_imgs + "/frame00000.png")
+
     files = os.listdir(path_imgs)
     num_files = len(files)
 
