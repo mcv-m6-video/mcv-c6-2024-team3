@@ -25,11 +25,11 @@ To run Task2.2 it is necessary to have the requirements of [SORT](https://github
 
 ## Tasks
 - **Task 1:** Object detection
-        - **Task 1.1:** Off-the-shelf
-        - **Task 1.2:** Annotation
-        - **Task 1.3:** Fine-tune to your data
-        - **Task 1.4:** K-Fold Cross-validation
+  - **Task 1.1:** Off-the-shelf
+  - **Task 1.2:** Annotation
+  - **Task 1.3:** Fine-tune to your data
+  - **Task 1.4:** K-Fold Cross-validation
 - **Task 2:** Object tracking
-        - **Task 2.1:** Tracking by Overlap
-        - **Task 2.2:** Tracking with a Kalman Filter
-        - **Task 2.3:** IDF1,HOTA scores
+  - **Task 2.1:** Tracking by Overlap
+  - **Task 2.2:** Tracking with a Kalman Filter
+  - **Task 2.3:** IDF1, HOTA scores
