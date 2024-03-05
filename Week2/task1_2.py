@@ -10,6 +10,6 @@ if __name__ == "__main__":
 
     input_video = '../OptionalTaskW2Dataset/train/S01/c001/vdo.avi'
     output_frames = 'S01_c001'
-    
+
     # Estoy suponiendo que ya he generado las imagenes pa no tener que hacerlo otra vez
     save_frames(input_video, output_frames)

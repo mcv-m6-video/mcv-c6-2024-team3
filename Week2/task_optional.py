@@ -12,7 +12,7 @@ import matplotlib.patches as patches
 from IPython import display as dp
 from skimage import io
 import re
-from deep_sort_app import run as deep_sort_run
+from deep_sort_app_v2 import run as deep_sort_run
 
 
 
@@ -182,9 +182,10 @@ class KalmanFiltering:
 if __name__ == '__main__':
     # Read detections - one file for each image
     det_path = '../yolov9/runs/detect/S01_c001/labels'
-    path_imgs = '../yolov9/runs/detect/S01_c001'
+    path_imgs = 'S01_c001'
     path_output = './trackingS01_c001'
     image = cv2.imread(path_imgs + "/frame00000.png")
+
     files = os.listdir(path_imgs)
     num_files = len(files)
 
