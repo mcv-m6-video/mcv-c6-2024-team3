@@ -1,56 +1,105 @@
-import torchvision
-from torchvision.models.detection import FasterRCNN_ResNet50_FPN_V2_Weights, fasterrcnn_resnet50_fpn_v2
 from torchvision.io.image import read_image
+from torchvision.models.detection import (
+    fasterrcnn_resnet50_fpn_v2,
+    FasterRCNN_ResNet50_FPN_V2_Weights,
+)
 from torchvision.utils import draw_bounding_boxes
 from torchvision.transforms.functional import to_pil_image
+from torchmetrics.detection import MeanAveragePrecision
+
+from tqdm import tqdm
+
 import os
-from utils import reset_folder
+import torch
 
-if __name__ == '__main__':
 
-    weights = FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT
-    model = fasterrcnn_resnet50_fpn_v2(weights = weights, box_score_thresh = 0.1)
-    model.eval()
+def yolo2xyxy(coords, height, width):
+    cls = int(coords[0])
+    x, y, w, h = [float(coord) for coord in coords[1:]]
+    x1 = (x - w / 2) * width
+    y1 = (y - h / 2) * height
+    x2 = (x + w / 2) * width
+    y2 = (y + h / 2) * height
 
-    input_path = 'framesOriginal'
-    image_list = os.listdir(input_path)
+    return [cls, x1, y1, x2, y2]
 
-    output_files = 'maskRCNN_output'
 
-    reset_folder(output_files)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    for img_name in image_list:
-        with open(os.path.join(output_files, img_name.split('.')[0] + '.txt'), 'w') as f:
-            img_path = os.path.join(input_path, img_name)
+images_dir = "/ghome/group04/georg-c6-w2/dataset/images"
+image_paths = [
+    os.path.join(images_dir, image_file) for image_file in os.listdir(images_dir)
+]
 
-            img = read_image(img_path)
+# Step 1: Initialize model with the best available weights
+weights = FasterRCNN_ResNet50_FPN_V2_Weights.DEFAULT
+model = fasterrcnn_resnet50_fpn_v2(weights=weights, box_score_thresh=0.9)
+model = model.to(device)
+model.eval()
 
-            c, h, w = img.shape
+# Step 2: Initialize the inference transforms
+preprocess = weights.transforms()
 
-            preprocess = weights.transforms()
+# Step 3: Apply inference preprocessing transforms
+preds = []
+gt_s = []
+for image_path in tqdm(image_paths):
 
-            batch = [preprocess(img)]
+    label_path = image_path.replace("images", "labels").replace(".png", ".txt")
 
-            predictions = model(batch)[0]
+    img = read_image(image_path).to(device)
+    _, h, w = img.shape
 
-            labels = [weights.meta['categories'][i] for i in predictions['labels']]
+    with open(label_path, "r") as fp:
+        lines = [line.split() for line in fp.readlines()]
+        lines = [yolo2xyxy(line, h, w) for line in lines]
 
-            for bbox, label, score, class_id in zip(predictions['boxes'], labels, predictions['scores'].detach(), predictions['labels'].detach()):
+    boxes = []
+    labels = []
 
-                xmin, ymin, xmax, ymax = bbox.detach()[0], bbox.detach()[1], bbox.detach()[2], bbox.detach()[3]
-                class_name = label
-                conf = score.item()
-                class_id = class_id.item()
+    for line in lines:
+        labels.append(line[0] + 1)
+        boxes.append(line[1:])
 
-                x_centre, y_centre = (xmin + xmax) / 2, (ymin + ymax) / 2
-                width, height = xmax - xmin, ymax - ymin
+    gt_dict = {
+        "boxes": torch.tensor(boxes, device=device),
+        "labels": torch.tensor(labels, device=device),
+    }
+    gt_s.append(gt_dict)
 
-                # We need to normalize the coordinates
-                x_centre /= w
-                y_centre /= h
-                width /= w
-                height /= h
+    batch = [preprocess(img)]
 
-                if class_name in ['car', 'truck', 'bus', 'motorcycle', 'bicycle', 'person']:
-                    f.write(f"{class_id - 1} {x_centre} {y_centre} {width} {height} {conf}\n")
+    # Step 4: Use the model and visualize the prediction
+    with torch.no_grad():
+        prediction = model(batch)[0]
+    labels = [weights.meta["categories"][i] for i in prediction["labels"]]
 
+    preds.append(prediction)
+
+    labels = [weights.meta["categories"][i] for i in prediction["labels"]]
+    img = draw_bounding_boxes(
+        img,
+        boxes=prediction["boxes"],
+        labels=labels,
+        colors="red",
+        width=4,
+        font_size=30,
+    )
+
+    labels = [weights.meta["categories"][i] for i in gt_dict["labels"]]
+    box = draw_bounding_boxes(
+        img,
+        boxes=gt_dict["boxes"],
+        labels=labels,
+        colors="blue",
+        width=4,
+        font_size=30,
+    )
+    img = to_pil_image(box.detach())
+    img.save("faster-r-cnn/" + image_path.split("/")[-1], "JPEG")
+
+metric = MeanAveragePrecision(iou_type="bbox")
+metric.update(preds, gt_s)
+from pprint import pprint
+
+pprint(metric.compute())
