@@ -13,7 +13,7 @@ The code of the tasks and data is structured as follows:
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
-References to [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+References to [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
 
 ## Running the code
 Each task corresponds to a separate file named after the task. To execute them, simply specify the desired hyperparameter values within the "main" section of the respective file and run it using Python 3, as demonstrated below:
@@ -23,7 +23,8 @@ python3 task1_1.py
  ```
 
 ## Requirements
-To run Task2.2 it is necessary to have the requirements of [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+To run Task2.2 it is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongKinYiu/yolov9) repository.
 
 ## Tasks
 - **Task 1:** Object detection
