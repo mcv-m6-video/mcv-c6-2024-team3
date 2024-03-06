@@ -182,9 +182,9 @@ class KalmanFiltering:
 
 if __name__ == '__main__':
     # Read detections - one file for each image
-    det_path = '../yolov9/runs/detect/S01_c001_B/labels'
-    path_imgs = 'S01_c001'
-    path_output = './trackingS01_c001_B'
+    det_path = '../yolov9/runs/detect/S04_c016_C/labels'
+    path_imgs = 'S04_c016'
+    path_output = './S04_c016_C'
     image = cv2.imread(path_imgs + "/frame00000.png")
 
     files = os.listdir(path_imgs)
@@ -200,3 +200,16 @@ if __name__ == '__main__':
 
 # python plot_bb_trail.py trackingS01_c001/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c001/vdo.avi trackingS01_c001/video_DeepSort.mp4
 # python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/yolov9-c.pt --conf 0.001 --source ../Week2/S01_c001/ --device 0
+'''
+    python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/yolov9-c.pt --conf 0.001 --source ../Week2/S04_c016/ --device 0
+    python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/YOLOv9StrategyBWeights.pt --conf 0.001 --source ../Week2/S04_c016/ --device 0
+    python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/YOLOv9StrategyCWeights.pt --conf 0.001 --source ../Week2/S04_c016/ --device 0
+
+    python plot_bb_trail.py trackingS01_c001_B/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c001/vdo.avi trackingS01_c001_B/video_DeepSort.mp
+    python plot_bb_trail.py trackingS01_c001_C/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c001/vdo.avi trackingS01_c001_C/video_DeepSort.mp4
+    python plot_bb_trail.py trackingS01_c001_NF/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c001/vdo.avi trackingS01_c001_NF/video_DeepSort.mp4
+
+    python plot_bb_trail.py trackingS04_c016_B/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S04/c016/vdo.avi trackingS04_c016_B/video_DeepSort.mp4
+    python plot_bb_trail.py trackingS04_c016_C/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S04/c016/vdo.avi trackingS04_c016_C/video_DeepSort.mp4
+    python plot_bb_trail.py trackingS04_c016_NF/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S04/c016/vdo.avi trackingS04_c016_NF/video_DeepSort.mp4
+'''
