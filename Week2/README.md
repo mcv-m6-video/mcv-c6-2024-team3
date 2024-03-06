@@ -17,6 +17,8 @@ Other files in the repository are just requirements and functions to execute th
 
 References to [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
 
+All the tracking evaluations (Task 2.3) have been performed with [TrackEval](https://github.com/JonathonLuiten/TrackEval).
+
 ## Running the code
 Each task corresponds to a separate file named after the task. To execute them, simply specify the desired hyperparameter values within the "main" section of the respective file and run it using Python 3, as demonstrated below:
 
