@@ -4,7 +4,7 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── Task2_2_annotations/    # In this folder you can find the annotations of the sequence
+        ├── Task1_2_annotations/    # In this folder you can find the annotations of the sequence
         ├── task1_1_fasterrcnn.py   # Off-the-shelf inference on Faster R-CNN
         ├── task1_2.py              # Annotations related
         ├── task2_1.py              # Tracking by Overlap
