@@ -13,6 +13,7 @@ from IPython import display as dp
 from skimage import io
 import re
 from deep_sort_app_v2 import run as deep_sort_run
+from utils import reset_folder
 
 
 
@@ -189,9 +190,13 @@ if __name__ == '__main__':
     files = os.listdir(path_imgs)
     num_files = len(files)
 
+    reset_folder(path_output)
 
     # Get the height and width
     h, w, _ = image.shape
     tracking = KalmanFiltering(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5)
     tracking.DeepSORT()
     tracking.SORT()
+
+# python plot_bb_trail.py trackingS01_c001/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c001/vdo.avi trackingS01_c001/video_DeepSort.mp4
+# python detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights weights/yolov9-c.pt --conf 0.001 --source ../Week2/S01_c001/ --device 0
