@@ -78,8 +78,15 @@ def read_rectangles(file_path):
             columns = line.split(',')
             
             # Extract frame number
-            frame = int(columns[0])
-            tid   = int(columns[1])
+            try:
+                frame = int(columns[0])
+            except:
+                frame = int(float(columns[0]))
+            
+            try:
+                tid   = int(columns[1])
+            except:
+                tid   = int(float(columns[1]))
             
             # Extract rectangle coordinates
             x1, y1, w, h = map(int, map(round, map(float, columns[2:6])))

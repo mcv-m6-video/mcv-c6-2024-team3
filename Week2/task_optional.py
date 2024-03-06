@@ -182,9 +182,9 @@ class KalmanFiltering:
 
 if __name__ == '__main__':
     # Read detections - one file for each image
-    det_path = '../yolov9/runs/detect/S01_c001/labels'
+    det_path = '../yolov9/runs/detect/S01_c001_B/labels'
     path_imgs = 'S01_c001'
-    path_output = './trackingS01_c001'
+    path_output = './trackingS01_c001_B'
     image = cv2.imread(path_imgs + "/frame00000.png")
 
     files = os.listdir(path_imgs)
