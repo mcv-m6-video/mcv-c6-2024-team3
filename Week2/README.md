@@ -8,8 +8,7 @@ The code of the tasks and data is structured as follows:
         ├── task1_2.py              # Annotations related
         ├── task2_1.py              # Tracking by Overlap
         ├── task2_2.py              # Tracking with SORT and DeepSORT       
-        ├── task_optional.py        # CVPR 2022 AI City Challenge
-        └── something else      
+        └── task_optional.py        # CVPR 2022 AI City Challenge    
 
 Other files in the repository are just requierements and funtions to execute the tasks.
 
