@@ -23,7 +23,7 @@ python3 task1_1.py
  ```
 
 ## Requirements
-To run Task2.2 it is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+To run Task2.2 it is necessary to have the requirements of [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
 
 ## Tasks
 - **Task 1:** Object detection
