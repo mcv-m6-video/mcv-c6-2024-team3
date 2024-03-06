@@ -4,12 +4,14 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── Task1_2_annotations/    # In this folder you can find the annotations of the sequence
-        ├── task1_1_fasterrcnn.py   # Off-the-shelf inference on Faster R-CNN
-        ├── task1_2.py              # Annotations related
-        ├── task2_1.py              # Tracking by Overlap
-        ├── task2_2.py              # Tracking with SORT and DeepSORT       
-        └── task_optional.py        # CVPR 2022 AI City Challenge    
+        ├── Task1_2_annotations/             # In this folder you can find the annotations of the sequence
+        ├── task1_1_fasterrcnn.py            # Off-the-shelf inference on Faster R-CNN
+        ├── task1_2.py                       # Annotations related
+        ├── task1_3_convert_annotations.py   # Related to task 1.3
+        ├── task1_4_kfold_split.py           # F-Fold CV
+        ├── task2_1.py                       # Tracking by Overlap
+        ├── task2_2.py                       # Tracking with SORT and DeepSORT       
+        └── task_optional.py                 # CVPR 2022 AI City Challenge    
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
