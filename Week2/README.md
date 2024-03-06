@@ -24,6 +24,7 @@ python3 task1_1.py
 
 ## Requirements
 To run Task2.2 it is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+
 To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongKinYiu/yolov9) repository.
 
 ## Tasks
