@@ -46,39 +46,32 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-Tracker PerfectTracker was unable to be evaluated.
-Tracking data contains the following invalid timesteps in seq custom-01: 434, , 435, , 436, , 437, , 438, , 439, , 440, , 441, , 442, , 443, , 444, , 445, , 446, , 447, , 448, , 449, , 450, , 451, , 452, , 453, , 454, 
-Traceback (most recent call last):
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 114, in evaluate
-    metric_names)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 218, in eval_sequence
-    raw_data = dataset.get_raw_seq_data(tracker, seq)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/_base_dataset.py", line 93, in get_raw_seq_data
-    raw_tracker_data = self._load_raw_file(tracker, seq, is_gt=False)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/mot_challenge_2d_box.py", line 222, in _load_raw_file
-    [str(x) + ', ' for x in extra_time_keys]))
-trackeval.utils.TrackEvalException: Tracking data contains the following invalid timesteps in seq custom-01: 434, , 435, , 436, , 437, , 438, , 439, , 440, , 441, , 442, , 443, , 444, , 445, , 446, , 447, , 448, , 449, , 450, , 451, , 452, , 453, , 454, 
-Traceback (most recent call last):
-  File "TrackEval/scripts/run_mot_challenge.py", line 91, in <module>
-    evaluator.evaluate(dataset_list, metrics_list)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 207, in evaluate
-    raise err
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 114, in evaluate
-    metric_names)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 218, in eval_sequence
-    raw_data = dataset.get_raw_seq_data(tracker, seq)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/_base_dataset.py", line 93, in get_raw_seq_data
-    raw_tracker_data = self._load_raw_file(tracker, seq, is_gt=False)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/mot_challenge_2d_box.py", line 222, in _load_raw_file
-    [str(x) + ', ' for x in extra_time_keys]))
-trackeval.utils.TrackEvalException: Tracking data contains the following invalid timesteps in seq custom-01: 434, , 435, , 436, , 437, , 438, , 439, , 440, , 441, , 442, , 443, , 444, , 445, , 446, , 447, , 448, , 449, , 450, , 451, , 452, , 453, , 454, 
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.0428 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.0458 sec
+    HOTA.eval_sequence()                                                   0.0734 sec
+    Identity.eval_sequence()                                               0.0034 sec
+    Count.eval_sequence()                                                  0.0000 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.1665 sec
+
+All sequences for PerfectTracker finished in 0.17 seconds
+
+HOTA: PerfectTracker-pedestrian    HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
+custom-01                          21.487    14.328    33.308    51.299    15.067    44.342    51.43     67.737    40.778    40.582    52.484    21.299    
+COMBINED                           21.487    14.328    33.308    51.299    15.067    44.342    51.43     67.737    40.778    40.582    52.484    21.299    
+
+Identity: PerfectTracker-pedestrianIDF1      IDR       IDP       IDTP      IDFN      IDFP      
+custom-01                          17.605    38.773    11.388    297       469       2311      
+COMBINED                           17.605    38.773    11.388    297       469       2311      
+
+Count: PerfectTracker-pedestrian   Dets      GT_Dets   IDs       GT_IDs    
+custom-01                          2608      766       44        13        
+COMBINED                           2608      766       44        13        
+
+Timing analysis:
+MotChallenge2DBox.get_raw_seq_data                                     0.0428 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.0458 sec
+HOTA.eval_sequence                                                     0.0734 sec
+Identity.eval_sequence                                                 0.0034 sec
+Count.eval_sequence                                                    0.0000 sec
+eval_sequence                                                          0.1665 sec
+Evaluator.evaluate                                                     2.3407 sec

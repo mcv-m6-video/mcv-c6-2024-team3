@@ -29,8 +29,8 @@ def read_number_of_frames(path):
 
 if __name__ == '__main__':
 
-    # folders = ['S01Track', 'S03Track', 'S04Track']
-    folders = ['S04Track']
+    folders = ['S01Track', 'S03Track', 'S04Track']
+    # folders = ['S04Track']
 
     for folder in folders:
         folderPath = Path(folder)

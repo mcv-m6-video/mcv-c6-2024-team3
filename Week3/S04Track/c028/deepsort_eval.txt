@@ -46,12 +46,12 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.0276 sec
-    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.0245 sec
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.0271 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.0246 sec
     HOTA.eval_sequence()                                                   0.0253 sec
     Identity.eval_sequence()                                               0.0019 sec
     Count.eval_sequence()                                                  0.0000 sec
-1 eval_sequence(custom-01, PerfectTracker)                               0.0798 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.0793 sec
 
 All sequences for PerfectTracker finished in 0.08 seconds
 
@@ -68,10 +68,10 @@ custom-01                          3183      122       72        2
 COMBINED                           3183      122       72        2         
 
 Timing analysis:
-MotChallenge2DBox.get_raw_seq_data                                     0.0276 sec
-MotChallenge2DBox.get_preprocessed_seq_data                            0.0245 sec
+MotChallenge2DBox.get_raw_seq_data                                     0.0271 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.0246 sec
 HOTA.eval_sequence                                                     0.0253 sec
 Identity.eval_sequence                                                 0.0019 sec
 Count.eval_sequence                                                    0.0000 sec
-eval_sequence                                                          0.0798 sec
-Evaluator.evaluate                                                     2.2205 sec
+eval_sequence                                                          0.0793 sec
+Evaluator.evaluate                                                     2.2129 sec

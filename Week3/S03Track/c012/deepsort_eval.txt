@@ -46,39 +46,32 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-Tracker PerfectTracker was unable to be evaluated.
-Tracking data contains the following invalid timesteps in seq custom-01: 2369, , 2370, , 2371, , 2372, , 2373, , 2374, , 2375, , 2376, , 2377, , 2378, , 2379, , 2380, , 2381, , 2382, , 2383, , 2384, , 2385, , 2386, , 2387, , 2388, , 2389, , 2390, , 2391, , 2392, , 2393, , 2394, , 2395, , 2396, , 2397, , 2398, , 2399, , 2400, , 2401, , 2402, , 2403, , 2404, , 2405, , 2406, , 2407, , 2408, , 2409, , 2410, , 2411, , 2412, , 2413, , 2414, , 2415, , 2416, , 2417, , 2418, , 2419, , 2420, , 2421, 
-Traceback (most recent call last):
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 114, in evaluate
-    metric_names)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 218, in eval_sequence
-    raw_data = dataset.get_raw_seq_data(tracker, seq)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/_base_dataset.py", line 93, in get_raw_seq_data
-    raw_tracker_data = self._load_raw_file(tracker, seq, is_gt=False)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/mot_challenge_2d_box.py", line 222, in _load_raw_file
-    [str(x) + ', ' for x in extra_time_keys]))
-trackeval.utils.TrackEvalException: Tracking data contains the following invalid timesteps in seq custom-01: 2369, , 2370, , 2371, , 2372, , 2373, , 2374, , 2375, , 2376, , 2377, , 2378, , 2379, , 2380, , 2381, , 2382, , 2383, , 2384, , 2385, , 2386, , 2387, , 2388, , 2389, , 2390, , 2391, , 2392, , 2393, , 2394, , 2395, , 2396, , 2397, , 2398, , 2399, , 2400, , 2401, , 2402, , 2403, , 2404, , 2405, , 2406, , 2407, , 2408, , 2409, , 2410, , 2411, , 2412, , 2413, , 2414, , 2415, , 2416, , 2417, , 2418, , 2419, , 2420, , 2421, 
-Traceback (most recent call last):
-  File "TrackEval/scripts/run_mot_challenge.py", line 91, in <module>
-    evaluator.evaluate(dataset_list, metrics_list)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 207, in evaluate
-    raise err
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 114, in evaluate
-    metric_names)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/eval.py", line 218, in eval_sequence
-    raw_data = dataset.get_raw_seq_data(tracker, seq)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/_timing.py", line 17, in wrap
-    result = f(*args, **kw)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/_base_dataset.py", line 93, in get_raw_seq_data
-    raw_tracker_data = self._load_raw_file(tracker, seq, is_gt=False)
-  File "/mnt/d/GithubProject/mcv-c6-2024-team3/Week3/TrackEval/trackeval/datasets/mot_challenge_2d_box.py", line 222, in _load_raw_file
-    [str(x) + ', ' for x in extra_time_keys]))
-trackeval.utils.TrackEvalException: Tracking data contains the following invalid timesteps in seq custom-01: 2369, , 2370, , 2371, , 2372, , 2373, , 2374, , 2375, , 2376, , 2377, , 2378, , 2379, , 2380, , 2381, , 2382, , 2383, , 2384, , 2385, , 2386, , 2387, , 2388, , 2389, , 2390, , 2391, , 2392, , 2393, , 2394, , 2395, , 2396, , 2397, , 2398, , 2399, , 2400, , 2401, , 2402, , 2403, , 2404, , 2405, , 2406, , 2407, , 2408, , 2409, , 2410, , 2411, , 2412, , 2413, , 2414, , 2415, , 2416, , 2417, , 2418, , 2419, , 2420, , 2421, 
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.1821 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.2069 sec
+    HOTA.eval_sequence()                                                   0.0852 sec
+    Identity.eval_sequence()                                               0.0162 sec
+    Count.eval_sequence()                                                  0.0000 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.4968 sec
+
+All sequences for PerfectTracker finished in 0.50 seconds
+
+HOTA: PerfectTracker-pedestrian    HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
+custom-01                          3.683     0.58716   26.674    56.519    0.58846   81.867    28.973    71.909    36.143    6.1008    56.841    3.4677    
+COMBINED                           3.683     0.58716   26.674    56.519    0.58846   81.867    28.973    71.909    36.143    6.1008    56.841    3.4677    
+
+Identity: PerfectTracker-pedestrianIDF1      IDR       IDP       IDTP      IDFN      IDFP      
+custom-01                          1.0911    52.941    0.55121   81        72        14614     
+COMBINED                           1.0911    52.941    0.55121   81        72        14614     
+
+Count: PerfectTracker-pedestrian   Dets      GT_Dets   IDs       GT_IDs    
+custom-01                          14695     153       58        17        
+COMBINED                           14695     153       58        17        
+
+Timing analysis:
+MotChallenge2DBox.get_raw_seq_data                                     0.1821 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.2069 sec
+HOTA.eval_sequence                                                     0.0852 sec
+Identity.eval_sequence                                                 0.0162 sec
+Count.eval_sequence                                                    0.0000 sec
+eval_sequence                                                          0.4968 sec
+Evaluator.evaluate                                                     2.6974 sec

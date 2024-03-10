@@ -46,12 +46,12 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.0322 sec
-    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.0324 sec
-    HOTA.eval_sequence()                                                   0.0512 sec
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.0312 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.0327 sec
+    HOTA.eval_sequence()                                                   0.0513 sec
     Identity.eval_sequence()                                               0.0023 sec
     Count.eval_sequence()                                                  0.0000 sec
-1 eval_sequence(custom-01, PerfectTracker)                               0.1188 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.1183 sec
 
 All sequences for PerfectTracker finished in 0.12 seconds
 
@@ -68,10 +68,10 @@ custom-01                          3047      548       47        7
 COMBINED                           3047      548       47        7         
 
 Timing analysis:
-MotChallenge2DBox.get_raw_seq_data                                     0.0322 sec
-MotChallenge2DBox.get_preprocessed_seq_data                            0.0324 sec
-HOTA.eval_sequence                                                     0.0512 sec
+MotChallenge2DBox.get_raw_seq_data                                     0.0312 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.0327 sec
+HOTA.eval_sequence                                                     0.0513 sec
 Identity.eval_sequence                                                 0.0023 sec
 Count.eval_sequence                                                    0.0000 sec
-eval_sequence                                                          0.1188 sec
-Evaluator.evaluate                                                     2.2698 sec
+eval_sequence                                                          0.1183 sec
+Evaluator.evaluate                                                     2.2668 sec

@@ -46,14 +46,14 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.1642 sec
-    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.1986 sec
-    HOTA.eval_sequence()                                                   0.2687 sec
-    Identity.eval_sequence()                                               0.0162 sec
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.1637 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.1984 sec
+    HOTA.eval_sequence()                                                   0.2736 sec
+    Identity.eval_sequence()                                               0.0166 sec
     Count.eval_sequence()                                                  0.0000 sec
-1 eval_sequence(custom-01, PerfectTracker)                               0.6523 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.6575 sec
 
-All sequences for PerfectTracker finished in 0.65 seconds
+All sequences for PerfectTracker finished in 0.66 seconds
 
 HOTA: PerfectTracker-pedestrian    HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
 custom-01                          21.616    13.32     35.552    52.053    13.764    58.875    39.009    66.501    42.82     40.562    52.833    21.43     
@@ -68,10 +68,10 @@ custom-01                          11141     2946      137       77
 COMBINED                           11141     2946      137       77        
 
 Timing analysis:
-MotChallenge2DBox.get_raw_seq_data                                     0.1642 sec
-MotChallenge2DBox.get_preprocessed_seq_data                            0.1986 sec
-HOTA.eval_sequence                                                     0.2687 sec
-Identity.eval_sequence                                                 0.0162 sec
+MotChallenge2DBox.get_raw_seq_data                                     0.1637 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.1984 sec
+HOTA.eval_sequence                                                     0.2736 sec
+Identity.eval_sequence                                                 0.0166 sec
 Count.eval_sequence                                                    0.0000 sec
-eval_sequence                                                          0.6523 sec
-Evaluator.evaluate                                                     2.7776 sec
+eval_sequence                                                          0.6575 sec
+Evaluator.evaluate                                                     2.8503 sec
