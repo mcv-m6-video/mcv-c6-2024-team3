@@ -3,8 +3,6 @@ from pathlib import Path
 import shutil
 from utils import save_frames
 
-# https://pramod-atre.medium.com/understanding-object-tracking-a-hands-on-approach-part-1-3fb1afd0ae46
-
 if __name__ == '__main__':
 
     yolo_runs = Path('../yolov9/runs/detect/exp/labels/')
@@ -45,7 +43,7 @@ if __name__ == '__main__':
             os.system(f'python ../yolov9/detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights ../yolov9/weights/YOLOv9StrategyCWeights.pt --conf 0.5 --source {out_frames} --device 0')
 
             # Execute the file task_2.py
-            os.system(f'python task_2.py --det_path {yolo_runs} --path_imgs {out_frames} --path_output {sequence_output}')
+            os.system(f'python task_2_tracking.py --det_path {yolo_runs} --path_imgs {out_frames} --path_output {sequence_output}')
 
             shutil.rmtree('../yolov9/runs/detect/exp/')
 
