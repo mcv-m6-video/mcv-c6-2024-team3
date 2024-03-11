@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import re
 from pyflow import pyflow
-
+import pickle
 
 
 
@@ -152,6 +152,16 @@ class Tracking:
  
 
         return flow
+    
+    def save_of(self, image_name, flow):
+        print(image_name)
+        directory = os.path.join(self.pathOutout, 'optical_flow')
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+
+        with open(self.pathOutout + "/optical_flow/" + image_name + '_of.pkl', 'wb') as f:
+            pickle.dump(flow, f)
+
 
 
     def SORT_OF(self):
@@ -181,7 +191,16 @@ class Tracking:
                 img_cur = img_cur.astype(float) / 255.
                 img_pre = np.array(Image.open(self.pathImgs + "/" + images_list[frame-2]))
                 img_pre = img_pre.astype(float) / 255.
-                pred_flow = self.compute_of(img_cur, img_pre)
+
+                actual_optical_flow = self.pathOutout + "/optical_flow/" + images_list[frame-1]
+
+                if os.path.exists(actual_optical_flow + '_of.pkl'):
+                    with open(actual_optical_flow + '_of.pkl', 'rb') as f:
+                        pred_flow = pickle.load(f)
+                else:
+                    pred_flow = self.compute_of(img_cur, img_pre)
+                    self.save_of(images_list[frame-1].split('.')[0], pred_flow)
+
                 #we use an edited version of the sort algorithm that takes int account the flow
                 trackers = mot_tracker.update(dets, pred_flow)
 
