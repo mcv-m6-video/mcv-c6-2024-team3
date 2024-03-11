@@ -65,6 +65,19 @@ if __name__ == '__main__':
             with open(sequence / 'sort_eval.txt', 'w') as file:
                 file.write(completed_process_sort.stdout)
                 file.write(completed_process_sort.stderr)
+
+    '''
+    Some useful commands to see the behaviour on some executions:
+
+    python plot_bb_trail.py S01Track/c004/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c004/vdo.avi S01Track/c004/video_DeepSort.mp4
+    python plot_bb_trail.py S01Track/c005/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S01/c005/vdo.avi S01Track/c005/video_DeepSort.mp4
+
+    python plot_bb_trail.py S03Track/c013/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S03/c013/vdo.avi S03Track/c013/video_DeepSort.mp4
+    python plot_bb_trail.py S03Track/c015/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S03/c015/vdo.avi S03Track/c015/video_DeepSort.mp4
+
+    python plot_bb_trail.py S04Track/c016/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S04/c019/vdo.avi S04Track/c016/video_DeepSort.mp4
+    python plot_bb_trail.py S04Track/c024/tracking_DeepSort.txt ../OptionalTaskW2Dataset/train/S04/c024/vdo.avi S04Track/c024/video_DeepSort.mp4
+    '''
             
 
 
