@@ -154,7 +154,6 @@ class Tracking:
         return flow
     
     def save_of(self, image_name, flow):
-        print(image_name)
         directory = os.path.join(self.pathOutout, 'optical_flow')
         if not os.path.exists(directory):
             os.makedirs(directory)
@@ -192,11 +191,12 @@ class Tracking:
                 img_pre = np.array(Image.open(self.pathImgs + "/" + images_list[frame-2]))
                 img_pre = img_pre.astype(float) / 255.
 
-                actual_optical_flow = self.pathOutout + "/optical_flow/" + images_list[frame-1]
+                actual_optical_flow = self.pathOutout + "/optical_flow/" + images_list[frame-1].split('.')[0] + '_of.pkl'
 
-                if os.path.exists(actual_optical_flow + '_of.pkl'):
-                    with open(actual_optical_flow + '_of.pkl', 'rb') as f:
+                if os.path.exists(actual_optical_flow):
+                    with open(actual_optical_flow, 'rb') as f:
                         pred_flow = pickle.load(f)
+                        
                 else:
                     pred_flow = self.compute_of(img_cur, img_pre)
                     self.save_of(images_list[frame-1].split('.')[0], pred_flow)
