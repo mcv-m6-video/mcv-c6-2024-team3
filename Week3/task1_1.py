@@ -2,8 +2,6 @@ from utils import *
 import wandb
 import time
 
-wandb.login(key='4127c8a2b851657f629b6f8f83ddc2e3415493f2')  # IKER
-
 sweep_config = {
     'method': 'random',
     'metric': {'goal': 'minimize', 'name': 'MSE'},
