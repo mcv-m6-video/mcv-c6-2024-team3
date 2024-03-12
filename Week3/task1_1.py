@@ -1,16 +1,16 @@
 from utils import *
 import time
-
+import wandb
 
 def block_matching(block_size = 16, mode = 'backward', aos = 32, error_function = "cv2_TM_CCORR_NORMED", step_size = 1):
 
-    prev_img = cv2.imread('/ghome/group02/C6/Week3/data_stereo_flow/training/colored_0/000045_10.png')
+    prev_img = cv2.imread('optical_flow_dataset/000045_10.png')
     prev_img_gray = cv2.cvtColor(prev_img, cv2.COLOR_BGR2GRAY) 
     # copy = prev_img.copy()
-    curr_img = cv2.imread('/ghome/group02/C6/Week3/data_stereo_flow/training/colored_0/000045_11.png')
+    curr_img = cv2.imread('optical_flow_dataset/000045_11.png')
     curr_img_gray = cv2.cvtColor(curr_img, cv2.COLOR_BGR2GRAY) 
 
-    gt = read_of('/ghome/group02/C6/Week3/data_stereo_flow/training/flow_noc/000045_10.png')
+    gt = read_of('optical_flow_dataset/gt.png')
 
 
     if mode == "backward":
@@ -106,7 +106,7 @@ def block_matching(block_size = 16, mode = 'backward', aos = 32, error_function 
             #                 (x + flowx + block_size // 2, y + flowy + block_size // 2),
             #                 (0, 255, 0), 1)
 
-    flow_met = postprocessing(flow_met, block_size)
+    # flow_met = postprocessing(flow_met, block_size)
     
     if mode == 'backward': #Get the plotting values (real ones)
         flow_plot = -flow_met
@@ -116,12 +116,43 @@ def block_matching(block_size = 16, mode = 'backward', aos = 32, error_function 
     mse,pepn = get_metrics(gt, flow_met)
     print(f"MSE:{mse}, PEPN:{pepn}, TIME:{execution_time}")
 
+    wandb.log({"MSE": mse, "PEPN": pepn, "TIME": execution_time})
+
     filename = f"mode_{mode}_bs_{block_size}_aos_{aos}_ef_{error_function}_ss_{step_size}"
     plot_dense_flow(flow_plot, filename)
     plot_flow(flow_plot, im_ref_rgb, filename, block_size)
 
     print('Finished!')
 
+sweep_config = {
+    'method': 'grid',
+
+    'parameters': {
+        'block_size': {
+            'values': [4, 8, 16, 32, 64, 128]
+        },
+
+        'area_of_search': {
+            'values': [4, 8, 16, 32, 64, 128]
+        }
+    }
+
+ }
+
+def train(config=None):
+    with wandb.init(config=config):
+        config = wandb.config
+
+        if config.area_of_search > 2 * config.block_size:
+            wandb.log({"MSE": -1, "PEPN": -1, "TIME": -1})
+        
+        else:
+            block_matching(
+                block_size = config.block_size,
+                aos=config.area_of_search)
+
 if __name__ == "__main__":
-    
-    block_matching()
+    sweep_id = wandb.sweep(sweep_config, project="BLOCK_MATCHING_BLOCKS")
+
+    numero_de_tries = len(sweep_config['parameters']['block_size']['values']) * len(sweep_config['parameters']['area_of_search']['values'])
+    wandb.agent(sweep_id, function=train, count=numero_de_tries)

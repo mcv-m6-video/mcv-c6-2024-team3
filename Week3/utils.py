@@ -3,6 +3,7 @@ import shutil
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.ndimage import median_filter, gaussian_filter
 
 
 def reset_folder(folder_path):
@@ -47,7 +48,7 @@ def read_of(flow_path):
     # Reorder channels
     return np.stack((flow_u, flow_v, flow_valid), axis=2)
 
-def get_metrics(flow, gt):
+def get_metrics(gt, flow):
 
     square_error_matrix = (flow[:,:,0:2] - gt[:,:,0:2]) ** 2
     square_error_matrix_valid = square_error_matrix*np.stack((gt[:,:,2],gt[:,:,2]),axis=2)
@@ -84,7 +85,7 @@ def plot_dense_flow(flow, filename):
     flow_bgr = cv2.cvtColor(flow_hsv, cv2.COLOR_HSV2BGR)
 
     #Write images
-    cv2.imwrite("figures/CV2/dense_" + filename + ".png", flow_bgr)
+    cv2.imwrite("optical_flow_dataset/imgs/dense_" + filename + ".png", flow_bgr)
 
     
 def plot_flow(flow, img, filename, step): 
@@ -102,7 +103,7 @@ def plot_flow(flow, img, filename, step):
     plt.axis('off')
     plt.quiver(X, Y, U, V, M, color='red', angles='xy')
     plt.imshow(img)
-    plt.savefig("figures/CV2/arrows_" + filename + ".png", bbox_inches='tight', pad_inches=0, dpi=250)
+    plt.savefig("optical_flow_dataset/imgs/arrows_" + filename + ".png", bbox_inches='tight', pad_inches=0, dpi=250)
 
 def error(image1, image2, function):
     
@@ -139,3 +140,49 @@ def error(image1, image2, function):
     
     
     return error
+
+def postprocessing(flow_met, block_size, smoothing = True):
+    #Iterate through the blocks
+    for i in range(0, flow_met.shape[0], block_size):
+        for j in range(0, flow_met.shape[1], block_size):
+            #Extract the current block
+            block_x = flow_met[i:i+block_size, j:j+block_size, 0]
+            block_y = flow_met[i:i+block_size, j:j+block_size, 1]
+
+            #Get the OF value of the current block (as all the pixels have the same, we can take any position)
+            block_median_x = block_x[0,0]
+            block_median_y = block_y[0,0]
+
+            # Compute the median values of neighboring blocks in both directions
+            neighboring_blocks_x = []
+            neighboring_blocks_y = []
+            for m in range(max(0, i - block_size), min(flow_met.shape[0], i + block_size + 1), block_size):
+                for n in range(max(0, j - block_size), min(flow_met.shape[1], j + block_size + 1), block_size):
+                    if m != i or n != j:
+
+                        neighboring_block_x = flow_met[m:m+block_size, n:n+block_size, 0]
+                        neighboring_blocks_x.append(neighboring_block_x[0,0])
+
+                        neighboring_block_y = flow_met[m:m+block_size, n:n+block_size, 1]
+                        neighboring_blocks_y.append(neighboring_block_y[0,0])
+
+            #Check if the block's value is significantly different from its neighbors median value in both directions
+            if np.abs(block_median_x - np.median(neighboring_blocks_x)) > 5:
+                # Interpolate the value of the current block based on its neighbors
+                interpolated_value = np.mean(neighboring_blocks_x)
+                flow_met[i:i+block_size, j:j+block_size, 0] = interpolated_value
+
+            if np.abs(block_median_y - np.median(neighboring_blocks_y)) > 5:
+                # Interpolate the value of the current block based on its neighbors
+                interpolated_value = np.mean(neighboring_blocks_y)
+                flow_met[i:i+block_size, j:j+block_size, 1] = interpolated_value
+        
+    if smoothing == True:
+        flow_blurred = np.zeros_like(flow_met)
+        for i in range(2):  # Apply median blur to each component of the flow separately
+            flow_blurred[..., i] = median_filter(flow_met[..., i], 9)
+            flow_blurred[..., i] = gaussian_filter(flow_blurred[..., i], sigma=9)
+        # flow_met = median_filter(flow_met, size=5)
+        flow_met = flow_blurred
+    
+    return flow_met

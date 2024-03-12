@@ -175,7 +175,7 @@ class Tracking:
             elif self.optical_flow == "our_own" and frame != 1:
                 path_cur = self.pathImgs + "/" + images_list[frame-1]
                 path_pre = self.pathImgs + "/" + images_list[frame-2]
-                actual_optical_flow = self.pathOutout + "/optical_flow_iker/" + images_list[frame-1].split('.')[0] + '_of.pkl'
+                actual_optical_flow = self.pathOutout + "/optical_flow/" + images_list[frame-1].split('.')[0] + '_of.pkl'
 
                 if os.path.exists(actual_optical_flow):
                     with open(actual_optical_flow, 'rb') as f:
