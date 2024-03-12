@@ -17,7 +17,9 @@ def convert_to_gif(input_file, output_file, fps=5, scale=None):
     # Write the GIF file with loop set to 0 for infinite looping
     clip.write_gif(output_file, fps=fps, loop=0)
 
-'''
+
+output_video = 'tracking_yolo_sort/optical_flow.mp4'
+
 im1 = np.array(Image.open('tracking_yolo_sort/frames/frame00000.png'))
 
 cap = cv2.VideoCapture('../OptionalTaskW2Dataset/train/S03/c010/vdo.avi')
@@ -34,7 +36,7 @@ height, width, _ = im1.shape
     
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # You can also use 'XVID' on Windows
-out = cv2.VideoWriter('tracking_yolo_sort/optical_flow.mp4', fourcc, fps, (width, height))
+out = cv2.VideoWriter(output_video, fourcc, fps, (width, height))
 
 for pickle_file in pickle_files.glob('*.pkl'):
 
@@ -52,6 +54,6 @@ for pickle_file in pickle_files.glob('*.pkl'):
     out.write(rgb)
 
 out.release()
-'''
 
-convert_to_gif('tracking_yolo_sort/optical_flow.mp4', 'tracking_yolo_sort/optical_flow.mp4'.replace('.mp4', '.gif'), fps=2, scale=0.25)
+
+convert_to_gif(output_video, output_video.replace('.mp4', '.gif'), fps=2, scale=0.25)
