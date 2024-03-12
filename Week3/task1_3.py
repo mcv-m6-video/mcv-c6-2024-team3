@@ -13,6 +13,7 @@ from PIL import Image
 import re
 from pyflow import pyflow
 import pickle
+from task1_1_modif import block_matching
 
 
 
@@ -36,7 +37,7 @@ Most of the code is recycled from last week
 
 class Tracking:
 
-    def __init__(self, pathDets, pathImgs,pathOutput,w = 1920, h = 1080, num_files = 0, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = None, type_combi = "indiv"):
+    def __init__(self, pathDets, pathImgs,pathOutput,w = 1920, h = 1080, num_files = 0, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = "our_own", type_combi = "indiv"):
         self.pathDets = pathDets
         self.pathImgs = pathImgs
         self.pathOutout = pathOutput
@@ -150,7 +151,7 @@ class Tracking:
             start_time = time.time()
 
             #compute optical flow --> entenc que el of es compute amb la actual i lanterior, llavors el primer frame no en tindra, posarem dues vegades la mateixa
-            if self.optical_flow == "pyflow" or frame != 1:
+            if self.optical_flow == "pyflow" and frame != 1:
 
                 img_cur = np.array(Image.open(self.pathImgs + "/" + images_list[frame-1]))
                 img_cur = img_cur.astype(float) / 255.
@@ -172,8 +173,20 @@ class Tracking:
 
 
             elif self.optical_flow == "our_own" and frame != 1:
-                pred_flow = "whatever"
-                pass
+                path_cur = self.pathImgs + "/" + images_list[frame-1]
+                path_pre = self.pathImgs + "/" + images_list[frame-2]
+                actual_optical_flow = self.pathOutout + "/optical_flow_iker/" + images_list[frame-1].split('.')[0] + '_of.pkl'
+
+                if os.path.exists(actual_optical_flow):
+                    with open(actual_optical_flow, 'rb') as f:
+                        pred_flow = pickle.load(f)
+                        
+                else:
+                    pred_flow = block_matching(path_cur, path_pre)
+                    self.save_of(images_list[frame-1].split('.')[0], pred_flow)
+
+                #we use an edited version of the sort algorithm that takes int account the flow
+                trackers = mot_tracker.update(dets, pred_flow)
             
 
             else: #dont use the optical flow
@@ -254,5 +267,5 @@ if __name__ == '__main__':
 
     # Get the height and width
     h, w, _ = image.shape
-    tracking = Tracking(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = "pyflow", type_combi="mean")
+    tracking = Tracking(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = "our_own", type_combi="mean")
     tracking.SORT_OF()
