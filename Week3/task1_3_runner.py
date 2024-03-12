@@ -52,7 +52,7 @@ if __name__ == '__main__':
     files = os.listdir(video_frames_tracking)
     num_files = len(files)
     optical_flow = "pyflow"
-    type_combi = "indiv"
+    type_combi = "mean"
     
     tracking = Tracking(
         pathDets = str(yolo_runs), 

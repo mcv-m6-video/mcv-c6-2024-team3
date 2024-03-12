@@ -46,32 +46,32 @@ Evaluating 1 tracker(s) on 1 sequence(s) for 1 class(es) on MotChallenge2DBox da
 
 Evaluating PerfectTracker
 
-    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.2939 sec
-    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.2257 sec
-    HOTA.eval_sequence()                                                   0.3917 sec
-    Identity.eval_sequence()                                               0.0164 sec
+    MotChallenge2DBox.get_raw_seq_data(PerfectTracker, custom-01)          0.3100 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.2163 sec
+    HOTA.eval_sequence()                                                   0.3795 sec
+    Identity.eval_sequence()                                               0.0157 sec
     Count.eval_sequence()                                                  0.0000 sec
-1 eval_sequence(custom-01, PerfectTracker)                               0.9349 sec
+1 eval_sequence(custom-01, PerfectTracker)                               0.9294 sec
 
-All sequences for PerfectTracker finished in 0.94 seconds
+All sequences for PerfectTracker finished in 0.93 seconds
 
 HOTA: PerfectTracker-pedestrian    HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
-custom-01                          60.32     66.326    55.186    67.65     95.739    55.855    96.766    94.27     61.015    62.717    93.639    58.727    
-COMBINED                           60.32     66.326    55.186    67.65     95.739    55.855    96.766    94.27     61.015    62.717    93.639    58.727    
+custom-01                          61.938    66.391    58.085    67.657    95.84     58.57     97.704    94.26     62.616    64.45     93.738    60.414    
+COMBINED                           61.938    66.391    58.085    67.657    95.84     58.57     97.704    94.26     62.616    64.45     93.738    60.414    
 
 Identity: PerfectTracker-pedestrianIDF1      IDR       IDP       IDTP      IDFN      IDFP      
-custom-01                          63.993    54.606    77.279    12057     10023     3545      
-COMBINED                           63.993    54.606    77.279    12057     10023     3545      
+custom-01                          65.899    56.209    79.624    12411     9669      3176      
+COMBINED                           65.899    56.209    79.624    12411     9669      3176      
 
 Count: PerfectTracker-pedestrian   Dets      GT_Dets   IDs       GT_IDs    
-custom-01                          15602     22080     85        59        
-COMBINED                           15602     22080     85        59        
+custom-01                          15587     22080     81        59        
+COMBINED                           15587     22080     81        59        
 
 Timing analysis:
-MotChallenge2DBox.get_raw_seq_data                                     0.2939 sec
-MotChallenge2DBox.get_preprocessed_seq_data                            0.2257 sec
-HOTA.eval_sequence                                                     0.3917 sec
-Identity.eval_sequence                                                 0.0164 sec
+MotChallenge2DBox.get_raw_seq_data                                     0.3100 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            0.2163 sec
+HOTA.eval_sequence                                                     0.3795 sec
+Identity.eval_sequence                                                 0.0157 sec
 Count.eval_sequence                                                    0.0000 sec
-eval_sequence                                                          0.9349 sec
-Evaluator.evaluate                                                     3.1960 sec
+eval_sequence                                                          0.9294 sec
+Evaluator.evaluate                                                     4.5831 sec
