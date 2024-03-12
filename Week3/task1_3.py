@@ -254,5 +254,5 @@ if __name__ == '__main__':
 
     # Get the height and width
     h, w, _ = image.shape
-    tracking = Tracking(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = "pyflow", type_combi="median")
+    tracking = Tracking(det_path, path_imgs, path_output, w, h,num_files, display = False, ini_0 = True, classes = [0,1,2,3,5,7], conf_thr = 0.5, optical_flow = "pyflow", type_combi="mean")
     tracking.SORT_OF()
