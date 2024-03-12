@@ -1,11 +1,6 @@
-from numpy import save
-from torch import gt
-from utils import save_frames
 from pathlib import Path
 import os
 import shutil
-from task1_3 import Tracking
-import cv2
 import subprocess
 
 GT_PATH = 'TrackEval/data/gt/mot_challenge/custom-train/custom-01/gt/gt.txt'
@@ -35,7 +30,7 @@ if __name__ == '__main__':
     track_file = os.path.join(path_output, 'tracking_SORT.txt')
     gt_file = sequence_path / 'gt' / 'gt.txt'
 
-    gt_frames = read_number_of_frames(gt)
+    gt_frames = read_number_of_frames(gt_file)
     sort_frames = read_number_of_frames(track_file)
 
     number_of_frames = max(gt_frames, sort_frames)
@@ -45,10 +40,10 @@ if __name__ == '__main__':
         file.write("name=custom\n")
         file.write("seqLength= {}\n".format(number_of_frames))
 
-    shutil.copy(gt, GT_PATH)
+    shutil.copy(gt_file, GT_PATH)
     shutil.copy(track_file, PREDICTED_PATH)
     completed_process_deep = subprocess.run(command, shell=True, capture_output=True, text=True)
 
-    with open(sequence_path / 'sort_eval.txt', 'w') as file:
+    with open(path_output + '/' + 'sort_eval.txt', 'w') as file:
         file.write(completed_process_deep.stdout)
         file.write(completed_process_deep.stderr)

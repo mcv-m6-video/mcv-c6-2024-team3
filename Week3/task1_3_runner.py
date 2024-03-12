@@ -70,3 +70,7 @@ if __name__ == '__main__':
     )
 
     tracking.SORT_OF()
+
+    '''
+    python plot_bb_trail.py tracking_yolo_sort/tracking_SORT.txt ../OptionalTaskW2Dataset/train/S03/c010/vdo.avi tracking_yolo_sort/video_SORTOF.mp4
+    '''
