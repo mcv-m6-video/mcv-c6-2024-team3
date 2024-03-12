@@ -1,4 +1,6 @@
 from __future__ import print_function
+
+from tqdm import tqdm
 from sort import Sort
 from sort_OF import Sort_OF
 import time
@@ -86,7 +88,7 @@ class Tracking:
         Output: frame, id, bb_left, bb_top, bb_width, bb_height, conf, -1, -1, -1
         Input: frame, x1,y1,x2,y2, id
         """
-        out_path = self.pathOutout + "/tracking_" + tracker + ".txt"
+        out_path = self.pathOutout + "/tracking_OF" + tracker + ".txt"
         with open(out_path, 'w') as f:
             for line in output:
                 x1, y1, x2, y2 = line[1:5]
@@ -140,7 +142,7 @@ class Tracking:
         else:
             mot_tracker = Sort()
 
-        for frame in range(int(self.detections_sort[:,0].max())): # all frames in the sequence
+        for frame in tqdm(range(int(self.detections_sort[:,0].max()))): # all frames in the sequence
             frame += 1 #detection and frame numbers begin at 1
             dets = self.detections_sort[self.detections_sort[:,0]==frame, -4:]   
 

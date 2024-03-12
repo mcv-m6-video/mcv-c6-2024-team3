@@ -143,9 +143,7 @@ def iou_batch_of(bb_test, bb_gt, optical_flow, type_combi):
         value = ((x1B <= new_ind[:,:,0]) & (new_ind[:,:,0] <= x2B) & (y1B <= new_ind[:,:,1]) & (new_ind[:,:,1] <= y2B)).sum()
         area = (x2B - x1B) * (y2B - y1B)
         match_score[i,j] = value/area
-        
-  print("matriu")
-  print(match_score)                                   
+                              
   return match_score
 
 

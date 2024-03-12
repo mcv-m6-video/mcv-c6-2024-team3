@@ -40,7 +40,7 @@ if __name__ == '__main__':
         except:
             pass
 
-        os.system(f'python3 ../yolov9/detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights ../yolov9/weights/YOLOv9StrategyCWeights.pt --conf 0.5 --source {video_frames_tracking} --device 0')
+        os.system(f'python3 ../yolov9/detect.py --save-txt --save-conf --classes 0 1 2 3 5 7 --weights ../yolov9/weights/YOLOv9StrategyBWeights.pt --conf 0.5 --source {video_frames_tracking} --device 0')
 
     det_path = str(yolo_runs)
 
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     files = os.listdir(video_frames_tracking)
     num_files = len(files)
     optical_flow = "pyflow"
-    type_combi = "median"
+    type_combi = "indiv"
     
     tracking = Tracking(
         pathDets = str(yolo_runs), 
@@ -64,13 +64,13 @@ if __name__ == '__main__':
         display = False, 
         ini_0 = True, 
         classes = [0,1,2,3,5,7], 
-        conf_thr = 0.4, 
+        conf_thr = 0.5, 
         optical_flow = optical_flow, 
         type_combi=type_combi
     )
 
     tracking.SORT_OF()
 
-    '''
-    python plot_bb_trail.py tracking_yolo_sort/tracking_SORT.txt ../OptionalTaskW2Dataset/train/S03/c010/vdo.avi tracking_yolo_sort/video_SORTOF.mp4
-    '''
+    
+    os.system('python3 plot_bb_trail.py tracking_yolo_sort/tracking_SORT.txt ../OptionalTaskW2Dataset/train/S03/c010/vdo.avi tracking_yolo_sort/video_SORTOF.mp4')
+   

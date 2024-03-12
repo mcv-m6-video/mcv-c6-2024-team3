@@ -27,13 +27,15 @@ if __name__ == '__main__':
     path_output = './tracking_yolo_sort'
 
 
-    track_file = os.path.join(path_output, 'tracking_SORT.txt')
-    gt_file = sequence_path / 'gt' / 'gt.txt'
+    track_file = os.path.join(path_output, 'tracking_OFSORT.txt')
+    gt_file = os.path.join(path_output, 'gt.txt')
 
     gt_frames = read_number_of_frames(gt_file)
     sort_frames = read_number_of_frames(track_file)
 
     number_of_frames = max(gt_frames, sort_frames)
+
+    number_of_frames = gt_frames
 
     with open(SEQINFO_PATH, "w") as file:
         file.write("[Sequence]\n")
