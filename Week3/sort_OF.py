@@ -92,19 +92,29 @@ def iou_batch_of(bb_test, bb_gt, optical_flow, type_combi):
   bb_test = np.expand_dims(bb_test, 1)
 
 
-  match_score = np.zeros((len(bb_test[0]), len(bb_gt[0])))
+  bb_gt = bb_gt[0]
+  bb_test = np.array([np.array(sublist[0]) for sublist in bb_test])
+
+
+
+  match_score = np.zeros((len(bb_test), len(bb_gt)))
+ 
+  # for the invidual pixel case  Generate meshgrid of indices directly using np.meshgrid
+  y_indices, x_indices = np.meshgrid(np.arange(optical_flow.shape[0]), np.arange(optical_flow.shape[1]), indexing='ij')
+  ind = np.stack((x_indices, y_indices), axis=-1)
   
   
   # more previous bbs and compute how many fall inside
-  for i, cur_bb in enumerate(bb_test[0]):
-    for j, prev_bb in enumerate(bb_gt[0]):
+  for i, cur_bb in enumerate(bb_test):
+    for j, prev_bb in enumerate(bb_gt):
       x1, y1, x2, y2, _ = prev_bb
+      
       x1, y1, x2, y2 = int(x1), int(y1), int(x2), int(y2)
       bbox_values = optical_flow[y1:y2, x1:x2]
 
       if type_combi == "mean":
-        u_mean = np.mean(bbox_values[..., 0])  # Mean of x movement
-        v_mean = np.mean(bbox_values[..., 1])  # Mean of y movement
+        u_mean = int(np.mean(bbox_values[..., 0]))  # Mean of x movement
+        v_mean = int(np.mean(bbox_values[..., 1]))  # Mean of y movement
         x1 += u_mean
         x2 += u_mean
         y1 += v_mean
@@ -112,27 +122,30 @@ def iou_batch_of(bb_test, bb_gt, optical_flow, type_combi):
         match_score[i,j] = iou(cur_bb, [x1,y1,x2,y2])
 
       if type_combi == "median":
-        u_mean = np.median(bbox_values[..., 0])  # Median of x movement
-        v_mean = np.median(bbox_values[..., 1])  # Median of y movement
+        u_mean = int(np.median(bbox_values[..., 0]))  # Median of x movement
+        v_mean = int(np.median(bbox_values[..., 1]))  # Median of y movement
         x1 += u_mean
         x2 += u_mean
         y1 += v_mean
         y2 += v_mean
-        print(i,j,iou(cur_bb, [x1,y1,x2,y2]))
         match_score[i,j] = iou(cur_bb, [x1,y1,x2,y2])
 
       elif type_combi == "indiv":
         #translate pixels individually and the metric is if they fall inside or not normalized by the max of pixels on the biggest bb
+        # Calculate new indices of each pixel based on optical flow and clip to stay within image boundaries
+        new_ind = ind[y1:y2, x1:x2] + optical_flow[y1:y2, x1:x2, :2].round()
+        new_ind[:,:,0] = np.clip(new_ind[:,:,0], 0, optical_flow.shape[1] - 1)
+        new_ind[:,:,1] = np.clip(new_ind[:,:,1], 0, optical_flow.shape[0] - 1)
 
-        pass
-      
-      
-      
-
-
-  
-  # combine iou matrix with optical flow matrix"""
-                                     
+        x1B, y1B, x2B, y2B = map(int, cur_bb)
+        # Count the number of pixels from bbox_current that fall within bbox_prev after applying optical flowç
+        # we normalize by the size of the new predicted bb
+        value = ((x1B <= new_ind[:,:,0]) & (new_ind[:,:,0] <= x2B) & (y1B <= new_ind[:,:,1]) & (new_ind[:,:,1] <= y2B)).sum()
+        area = (x2B - x1B) * (y2B - y1B)
+        match_score[i,j] = value/area
+        
+  print("matriu")
+  print(match_score)                                   
   return match_score
 
 

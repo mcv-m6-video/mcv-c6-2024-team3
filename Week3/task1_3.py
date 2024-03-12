@@ -15,27 +15,18 @@ import pickle
 
 
 # SORT code provided by https://github.com/telecombcn-dl/2017-persontyle/blob/master/sessions/tracking/tracking_kalman.ipynb
-# Pyfloe code provided by https://github.com/pathak22/pyflow/tree/master
+# Pyflow code provided by https://github.com/pathak22/pyflow/tree/master
 # Thank you all!
 
-"""
-TO TAKE INTO ACCOUNT:
-- We need to optimize DeepSort hyperparameters
-- Important, i changed the names of the images to be 00000.jpg instead of 00000_png(something_weird).jpg
-"""
 
 """
 Use Optical flow to improve the tracking from previous weeks
 Most of the code is recycled from last week
 - we start with the one we got the best results last week (the best combination):
-    - yolov9 finetuned + sort and deepsort (provarem tots dos)
+    - yolov9 finetuned + sort
     - comparar amb la notra implementacio del optical flow i la millor de les ja implementades (de moment pyflow)
 
 - calculate execution time
-- try 2 methods:
-    - ajuntar of amb sort i deepsort
-    - paper del senyor provar
-
 """
 
 
@@ -55,10 +46,8 @@ class Tracking:
         self.classes = classes
         self.conf_thr = conf_thr
         self.optical_flow = optical_flow
-        self.type_combi = type_combi #combination treshold betweein Iou and optical flow of bounding boxes
+        self.type_combi = type_combi #type of movement of the optical flow
         self.detections_sort = self.yolo2sort()
-        self.detection_mot = self.yolo2mot()
-
 
 
     def yolo2sort(self):
@@ -91,31 +80,6 @@ class Tracking:
     
 
 
-    def yolo2mot(self):
-        files = os.listdir(self.pathDets) # we are ssuming only txt files here
-        files = sorted(files)
-        mot_detecs = []
-        for img_detecs in files:
-            file_path = os.path.join(self.pathDets, img_detecs)
-            with open(file_path, 'r') as file:
-                frame_real = int(re.findall(r'\d+', img_detecs)[0])
-                if self.ini_0:
-                    frame_real +=1
-                for line in file:
-                    elems = [float(elem) for elem in line.split()]
-                    cat = elems[0]
-                    if cat in self.classes and elems[5] >= self.conf_thr:
-                        x, y, w, h, conf = elems[1:6]
-                        bb_left = x * self.im_width - w * self.im_width / 2
-                        bb_top = y * self.im_height - h * self.im_height / 2
-                        bb_width = w * self.im_width
-                        bb_height = h * self.im_height
-
-                        # Output: frame, id, bb_left, bb_top, bb_width, bb_height, conf, -1, -1, -1
-                        mot_detecs.append([frame_real, -1, bb_left, bb_top, bb_width, bb_height, conf, -1, -1, -1])
-        return np.array(mot_detecs)
-    
-
     def sort2mot_challenge(self, output, tracker):
         """
         Saves a txt file in pathOutput with the tracking in the format necessary to run TrackEval
@@ -134,7 +98,7 @@ class Tracking:
                 f.write(','.join(map(str, parsed_output)) + '\n')
 
     def compute_of(self, img_cur, img_prev):
-        "taken from pyflow"
+        "taken from pyflow, with all default parameters"
         alpha = 0.012
         ratio = 0.75
         minWidth = 20
@@ -277,12 +241,14 @@ class Tracking:
 
 if __name__ == '__main__':
     # Read detections - one file for each image
-    det_path = 'dets/'
-    path_imgs = '../Week1/framesOriginal/'
-    path_output = 'tracking_output/'
+    det_path = '/home/user/Documents/MASTER/C6/mcv-c6-2024-team3/Week2/data_yolo/dets'
+    path_imgs = '/home/user/Documents/MASTER/C6/mcv-c6-2024-team3/Week2/data_yolo/images'
+    path_output = '/home/user/Documents/MASTER/C6/mcv-c6-2024-team3/Week3/tracking'
     image = cv2.imread(path_imgs + "/frame00000.png")
     files = os.listdir(path_imgs)
     num_files = len(files)
+
+
 
     # Get the height and width
     h, w, _ = image.shape
