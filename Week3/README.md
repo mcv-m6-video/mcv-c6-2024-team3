@@ -13,6 +13,7 @@ The code of the tasks and data is structured as follows:
         ├── task1_1_modif.py                 # A modification of the task1_1 model to run with several images.
         ├── task1_1.py                       # The task1_1 implementation.
         ├── task1_2.ipynb                    # The task1_2 implementation.
+        ├── task1_2_utils.py                 # Helper functions used in task1_2 implementation.
         ├── task1_3.py                       # The task1_3 implementation.
         ├── task1_3_evaluator.py             # The task1_3 implementation to obtain the evaluation automatically.
         ├── task1_3_runner.py                # The task1_3 implementation to get the optical flow tracking.
