@@ -24,7 +24,7 @@ The code of the tasks and data is structured as follows:
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
-References to [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+References to [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort) and [PyFlow](https://github.com/pathak22/pyflow).
 
 All the tracking evaluations have been performed with [TrackEval](https://github.com/JonathonLuiten/TrackEval).
 
@@ -36,7 +36,7 @@ python3 task1_1.py
  ```
 
 ## Requirements
-To run tracking is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and [DeepSORT](https://github.com/nwojke/deep_sort).
+To run tracking is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and[PyFlow](https://github.com/pathak22/pyflow).
 
 To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongKinYiu/yolov9) repository.
 
