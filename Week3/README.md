@@ -36,7 +36,7 @@ python3 task1_1.py
  ```
 
 ## Requirements
-To run tracking is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and[PyFlow](https://github.com/pathak22/pyflow).
+To run tracking is necessary to have the requirements of [SORT](https://github.com/abewley/sort) and [PyFlow](https://github.com/pathak22/pyflow).
 
 To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongKinYiu/yolov9) repository.
 
