@@ -1,3 +1,9 @@
 [submodule "Week2/Week2/yolov9"]
 	path = Week2/Week2/yolov9
 	url = https://github.com/WongKinYiu/yolov9.git
+[submodule "Week3/pyflow"]
+	path = Week3/pyflow
+	url = https://github.com/pathak22/pyflow.git
+[submodule "Week3/unimatch"]
+	path = Week3/unimatch
+	url = https://github.com/autonomousvision/unimatch.git

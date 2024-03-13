@@ -18,3 +18,4 @@ OptionalTaskW2Dataset/
 *.png
 maskRCNN_output/
 *.gif
+Week3/data/
