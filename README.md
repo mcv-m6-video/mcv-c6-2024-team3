@@ -11,7 +11,8 @@ The repository is organized into weekly folders, each containing the code and do
 ## Updates
 We regularly update this repository with our latest findings, developments, and outcomes. Feel free to explore the different weeks' contributions.
 
-
+## Final Slides Part 1
+https://docs.google.com/presentation/d/16eibYtT_KVRATw6F7Q0GUhfN67-a0FJRqyS7T9o2yio/edit?usp=drive_link
 
 ### Team Members:
 - [Iker Garcia](https://github.com/ikergf)

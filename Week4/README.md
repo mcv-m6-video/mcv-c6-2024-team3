@@ -4,8 +4,15 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── S01Track/                        # In this folder you can find the results of the tracking on each video of the S01 sequence.
-        └── utils_2.py                       # Modification of util functions
+        ├── GT_custom_videos/                # The data annotated for the task 1.2
+        ├── Task1/                           # All the files for the task 1
+        ├── utils/                           # Some files for testing and visualization
+        ├── get_gps_coordinates.py           # Function to get the GPS coordinates from some points
+        ├── refinedTracking2MOT.py           # Move the file format from the one from task 2 to mot challenge
+        ├── reid_insideframe.py              # The code for compute the reidintification for task 2
+        ├── task2_X.py                       # Are all the steps from previous weeks to obtain the predictions and the tracking
+        └── utils.py                         # Some functions to use in some files
+        
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
@@ -31,5 +38,5 @@ To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongK
   - **Task 1.2:** Use your own data
 - **Task 2:** Multi Camera Tracking
 
-## Linkl to the slides
+## Link to the slides
 https://docs.google.com/presentation/d/16eibYtT_KVRATw6F7Q0GUhfN67-a0FJRqyS7T9o2yio/edit?usp=drive_link
