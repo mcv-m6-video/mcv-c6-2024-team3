@@ -4,8 +4,15 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── S01Track/                        # In this folder you can find the results of the tracking on each video of the S01 sequence.
-        └── utils_2.py                       # Modification of util functions
+        ├── GT_custom_videos/                # The data annotated for the task 1.2
+        ├── Task1/                           # All the files for the task 1
+        ├── utils/                           # Some files for testing and visualization
+        ├── get_gps_coordinates.py           # Function to get the GPS coordinates from some points
+        ├── refinedTracking2MOT.py           # Move the file format from the one from task 2 to mot challenge
+        ├── reid_insideframe.py              # The code for compute the reidintification for task 2
+        ├── task2_X.py                       # Are all the steps from previous weeks to obtain the predictions and the tracking
+        └── utils.py                         # Some functions to use in some files
+        
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
