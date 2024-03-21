@@ -31,5 +31,5 @@ To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongK
   - **Task 1.2:** Use your own data
 - **Task 2:** Multi Camera Tracking
 
-## Linkl to the slides
+## Link to the slides
 https://docs.google.com/presentation/d/16eibYtT_KVRATw6F7Q0GUhfN67-a0FJRqyS7T9o2yio/edit?usp=drive_link
