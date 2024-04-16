@@ -1,9 +1,9 @@
-# TEAM 3: Video Surveillance for Road Project & Human action recognition
+# TEAM 3: Video Surveillance for Road Project & Human Action Recognition
 
 Welcome to the MCV-C6 project repository for video surveillance on roads. This repository houses the code and progress of Team 3 within the C6 project of the MCV.
 
 ## About
-The MCV-C6 project focuses on developing robust video surveillance techniques tailored for road monitoring. This repository serves as a central hub for our team's contributions and advancements in the field.
+The MCV-C6 project focuses on two main tasks: developing robust video surveillance techniques tailored for road monitoring (Weeks 1-4) and developing and experimenting with human action recognition techniques (Weeks 5 - end). This repository serves as a central hub for our team's contributions and advancements in the field.
 
 ## Repository Structure
 The repository is organized into weekly folders, each containing the code and documentation for that particular week's tasks. Detailed instructions on running the code for each week are provided within their respective folders.
