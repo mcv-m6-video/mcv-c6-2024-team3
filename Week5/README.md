@@ -4,7 +4,7 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── Task_21_31_32/src/               # In this folder you can find the results of the tracking on each video of the S01 sequence.
+        ├── Task_21_31_32/src/               # In this folder you can find the code of all the tasks mentioned on the folder.
         │   ├── datasets/                    # This folder remain the same as the one given.
         │   ├── models/                      # This folder remain the same as the one given.
         │   ├── utils/                       # This folder remain the same as the one given.
