@@ -508,31 +508,29 @@ sweep_config = {
     'metric': {'goal': 'maximize', 'name': 'acc_val'},
     'parameters': {
         'clip_length': {
-            'values': [4, 8], 
+            'values': [4], 
         },
         'n_epochs': {
             'values':[50]
 
         },
         'crop_size' : {
-            'values': [182, 224]
+            'values': [182]
             },
         'batch_size': {
-            'values': [8, 16]
+            'values': [16]
         },
         'optimizer_name': {
-            'values': ['adam', 'sgd']
+            'values': ['adam']
         },
         'lr': {
-            'distribution': 'uniform',
-            'max': 0.0001,
-            'min': 0.00001
+            'values': [1e-4]
         },
         'temporal_stride': {
-            'values': [2, 4, 8, 12]
+            'values': [4]
         },
         'num_seg': {
-            'values': [2, 3, 5]
+            'values': [3]
         },
         'validate_every': {
             'values': [1]
