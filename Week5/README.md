@@ -6,6 +6,8 @@ The code of the tasks and data is structured as follows:
         .
         ├── Task_21_31_32/src/               # In this folder you can find the code of all the tasks mentioned on the folder.
         │   ├── datasets/                    # This folder remain the same as the one given.
+        │   |   ├── HMDB51Dataset.py         # This file remain the same as the one given.
+        │   |   └── HMDB51DatasetCustom.py   # This file contains the code to create the multiview datasets.
         │   ├── models/                      # This folder remain the same as the one given.
         │   ├── utils/                       # This folder remain the same as the one given.
         │   ├── best_model.py                # This is the pipeline to execute the inference setting the best parameters.
