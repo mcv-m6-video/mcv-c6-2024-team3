@@ -1,4 +1,4 @@
-# TEAM 3: Video Surveillance for Road Project
+# TEAM 3: Video Surveillance for Road Project & Human action recognition
 
 Welcome to the MCV-C6 project repository for video surveillance on roads. This repository houses the code and progress of Team 3 within the C6 project of the MCV.
 
