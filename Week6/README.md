@@ -10,6 +10,7 @@ The code of the tasks and data is structured as follows:
         │   ├── models/
         │   │   └── model_creator.py         # This file has been changed to add the modifications to X3D-XS and MoViNet-A0
         │   ├── utils/                       # This folder remain the same as the one given.
+        │   ├── inference_custom_videos.py   # This file is used to do inference with the desired models.
         │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
         │   └── train_optimize_baseline.py   # This is the baseline training code slightly modified for our task.
         ├── Task_2                           # In this folder you can find the code of the task 2.
