@@ -1,35 +1,52 @@
-# Week 4: Video Surveillance for Road
+# Week 5: Action detection
 
 ## Folder structure 
 The code of the tasks and data is structured as follows:
 
         .
-        ├── S01Track/                        # In this folder you can find the results of the tracking on each video of the S01 sequence.
-        └── utils_2.py                       # Modification of util functions
+        ├── Task_21_31_32/src/               # In this folder you can find the code of all the tasks mentioned on the folder.
+        │   ├── datasets/                    # This folder remain the same as the one given.
+        │   |   ├── HMDB51Dataset.py         # This file remain the same as the one given.
+        │   |   └── HMDB51DatasetCustom.py   # This file contains the code to create the multiview datasets.
+        │   ├── models/                      # This folder remain the same as the one given.
+        │   ├── utils/                       # This folder remain the same as the one given.
+        │   ├── best_model.py                # This is the pipeline to execute the inference setting the best parameters.
+        │   ├── inference.py                 # This is the code to execute the parameter optimization for the inference.
+        │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
+        │   └── train.py                     # This is the code given by default to train the model.
+        ├── Task_41_42                       # In this folder you can find the code of all the tasks mentioned on the folder.
+        |   ├── datasets/                    # This folder remain the same as the one given.
+        │   |   ├── HMDB51Dataset.py         # This file remain the same as the one given.
+        |   |   ├── HMDB51Dataset_4.py       # This file contains the modified file to load the clips as in TSN.
+        │   |   └── HMDB51DatasetCustom.py   # This file contains the code to create the multiview datasets.
+        |   ├── models/                      # This folder remain the same as the one given.
+        |   ├── utils/                       # This folder remain the same as the one given.
+        │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
+        │   └── train_optimize.py            # This code has been modified to apply the TSN method.
+        └── README.md                        # Modification of util functions
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
-References to [YOLOv9](https://github.com/WongKinYiu/yolov9), [SORT](https://github.com/abewley/sort), [DeepSORT](https://github.com/nwojke/deep_sort).
-
-All the tracking evaluations have been performed with [TrackEval](https://github.com/JonathonLuiten/TrackEval).
-
 ## Running the code
-Each task corresponds to a separate file named after the task. To execute them, simply specify the desired hyperparameter values within the "main" section of the respective file and run it using Python 3, as demonstrated below:
+To run the code you have just to add the frames folder into the root folder of the repository and then execute
 
 ```bash
-python3 task1_1.py
+python Task21_31_32/src/SCRIPT.py frames/
+ ```
+
+```bash
+python Task_41_42/train_optimize.py
  ```
 
 ## Requirements
-To run tracking is necessary to have the requirements of [SORT](https://github.com/abewley/sort), [DeepSORT](https://github.com/nwojke/deep_sort).
-
-To use the YOLOv9 model, you need to clone the [YOLOv9](https://github.com/WongKinYiu/yolov9) repository.
+We add a requierements.txt file to install the libraries
 
 ## Tasks
-- **Task 1:** Speed estimation
-  - **Task 1.1:** Use the given dataset
-  - **Task 1.2:** Use your own data
-- **Task 2:** Multi Camera Tracking
-
-## Linkl to the slides
-https://docs.google.com/presentation/d/16eibYtT_KVRATw6F7Q0GUhfN67-a0FJRqyS7T9o2yio/edit?usp=drive_link
+- **Task 2:** Baseline model
+  - **Task 2.1:** Run the baseline model.
+- **Task 3:** Multi View
+  - **Task 3.1:** Inference creating clips
+  - **Task 3.2:** Inference creating clips and spatial modifications.
+- **Task 4:** Improving results
+  - **Task 4.1:** Implement TSN
+  - **Task 4.2:** Apply any other change to improve the results
