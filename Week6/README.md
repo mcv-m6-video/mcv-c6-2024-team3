@@ -4,16 +4,14 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── Task_1/src/                      # In this folder you can find the code of all the tasks mentioned on the folder.
+        ├── task_1                           # In this folder you can find the code of all the tasks mentioned on the folder.
         │   ├── datasets/                    # This folder remain the same as the one given.
-        │   |   ├── HMDB51Dataset.py         # This file remain the same as the one given.
-        │   |   └── HMDB51DatasetCustom.py   # This file contains the code to create the multiview datasets.
-        │   ├── models/                      # This folder remain the same as the one given.
+        │   |   └── HMDB51Dataset.py         # This file remain the same as the one given.
+        │   ├── models/
+        │   │   └── model_creator.py         # This file has been changed to add the modifications to X3D-XS and MoViNet-A0
         │   ├── utils/                       # This folder remain the same as the one given.
-        │   ├── best_model.py                # This is the pipeline to execute the inference setting the best parameters.
-        │   ├── inference.py                 # This is the code to execute the parameter optimization for the inference.
         │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
-        │   └── train.py                     # This is the code given by default to train the model.
+        │   └── train_optimize_baseline.py   # This is the baseline training code slightly modified for our task.
         ├── Task_2                           # In this folder you can find the code of the task 2.
         |   ├── utils/                       # This folder remain the same as the one given.
         │   |   ├── __init__.py              # This file remain the same as the one given.
@@ -31,7 +29,7 @@ Other files in the repository are just requirements and functions to execute th
 To run the code you have just to add the frames folder into the root folder of the repository and then execute
 
 ```bash
-python Task21_31_32/src/SCRIPT.py frames/
+python task_1/train_optimize_baseline.py
  ```
 
 ```bash
