@@ -1,4 +1,4 @@
-# Week 5: Action detection
+# Week 6: Action detection
 
 ## Folder structure 
 The code of the tasks and data is structured as follows:
