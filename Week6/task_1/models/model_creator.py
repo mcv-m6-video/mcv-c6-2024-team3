@@ -12,6 +12,12 @@ def create(model_name: str, load_pretrain: bool, num_classes: int) -> nn.Module:
         return create_x3d_xs(load_pretrain, num_classes)
     elif model_name == 'movinet':
         return create_movinet(load_pretrain, num_classes)
+    elif model_name == 'x3d_s':
+        return create_x3d_s(load_pretrain, num_classes)
+    elif model_name == 'x3d_m':
+        return create_x3d_m(load_pretrain, num_classes)
+    elif model_name == 'resnet_slow':
+        return create_resnet_slow(load_pretrain, num_classes)
     
     else:
         raise ValueError(f"Model {model_name} not supported")
@@ -108,5 +114,26 @@ def create_movinet(load_pretrain, num_classes):
     model = torch.quantization.quantize_dynamic(model, qconfig_spec={torch.nn.Linear}, dtype=torch.qint8)
 
     return model
-    
+
+def create_x3d_s(load_pretrain, num_classes):
+    model = torch.hub.load('facebookresearch/pytorchvideo', 'x3d_s', pretrained=load_pretrain)
+    model.blocks[5].proj = nn.Identity()
+    return nn.Sequential(
+        model,
+        nn.Linear(2048, num_classes, bias=True),
+    )
+def create_x3d_m(load_pretrain, num_classes):
+    model = torch.hub.load('facebookresearch/pytorchvideo', 'x3d_m', pretrained=load_pretrain)
+    model.blocks[5].proj = nn.Identity()
+    return nn.Sequential(
+        model,
+        nn.Linear(2048, num_classes, bias=True),
+    )
+def create_resnet_slow(load_pretrain, num_classes):
+    model = torch.hub.load('facebookresearch/pytorchvideo', 'slow_r50', pretrained=load_pretrain)
+    model.blocks[5].proj = nn.Identity()
+    return nn.Sequential(
+        model,
+        nn.Linear(2048, num_classes, bias=True),
+    )
     
