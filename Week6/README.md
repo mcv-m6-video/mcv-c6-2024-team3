@@ -4,7 +4,7 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── Task_1/src/               # In this folder you can find the code of all the tasks mentioned on the folder.
+        ├── Task_1/src/                      # In this folder you can find the code of all the tasks mentioned on the folder.
         │   ├── datasets/                    # This folder remain the same as the one given.
         │   |   ├── HMDB51Dataset.py         # This file remain the same as the one given.
         │   |   └── HMDB51DatasetCustom.py   # This file contains the code to create the multiview datasets.
