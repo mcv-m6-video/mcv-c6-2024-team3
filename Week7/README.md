@@ -39,7 +39,7 @@ python Task2/SCRIPT_YOU_WANT.py
 
 ## Tasks
 - **Task 1:** Choose and evaluate a secondary modality by itself --> OF.
--         **Task 2:** Exploit the two modalities in a multi-modal approach to try to improve unimodal models.
--         **2.1** Class score-level fusion.
--         **2.2** Early fusion.
+- **Task 2:** Exploit the two modalities in a multi-modal approach to try to improve unimodal models.
+  - **2.1** Class score-level fusion.
+  - **2.2** Early fusion.
 
