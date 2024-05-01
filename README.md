@@ -14,6 +14,10 @@ We regularly update this repository with our latest findings, developments, and 
 ## Final Slides Part 1
 https://docs.google.com/presentation/d/16eibYtT_KVRATw6F7Q0GUhfN67-a0FJRqyS7T9o2yio/edit?usp=drive_link
 
+## Final Slides Part 2
+https://docs.google.com/presentation/d/1VhWkKxisd2LmTQfAK9JOti0n-R_GAiNnpqBzoEu6x0M/edit?usp=sharing
+
+
 ### Team Members:
 - [Iker Garcia](https://github.com/ikergf)
 - [Georg Herodes](https://github.com/gherodessupplai)
