@@ -1,4 +1,4 @@
-# Week 6: Action detection
+# Week 7: Multimodal
 
 ## Folder structure 
 The code of the tasks and data is structured as follows:
@@ -13,16 +13,19 @@ The code of the tasks and data is structured as follows:
         │   ├── inference_custom_videos.py   # This file is used to do inference with the desired models.
         │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
         │   └── train_optimize_baseline.py   # This is the baseline training code slightly modified for our task.
-        ├── Task_2                           # In this folder you can find the code of the task 2.
+        ├── Task2                            # In this folder you can find the code of the task 2.
         |   ├── utils/                       # This folder remain the same as the one given.
         │   |   ├── __init__.py              # This file remain the same as the one given.
         |   |   ├── model_analysis.py        # This file remain the same as the one given.
         │   |   └── statistics.py            # This file remain the same as the one given.
-        |   ├── data_utils.py                # This file is the one where we defined the dataset class.
-        |   ├── inference.py                 # This file is used to load the best weights of the model you desire and get the metrics and plots.
+        |   ├── HMDB51Dataset.py             # This file is the one where we defined the dataset class, custom for the multimodal this week.
+        |   ├── data_utils.py                # A backup before implementing the TSN for training and inference :)
+        │   ├── model_task1.py               # Model generator function for task 1.
+        │   ├── model_task2.py               # Model generator function for task 2.
         │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
-        │   └── train.py                     # This file is a wandb method to optimize the hyperparameters of the image model classification.
-        └── README.md                        # Modification of util functions
+        │   ├── task_1.py                    # Code to train the model the task 1.
+        │   └── task_2.py                    # Code to train the model the task 2.
+        └── README.md                        # README.md
 
 Other files in the repository are just requirements and functions to execute the tasks.
 
@@ -30,11 +33,11 @@ Other files in the repository are just requirements and functions to execute th
 To run the code you have just to add the frames folder into the root folder of the repository and then execute
 
 ```bash
-python task_1/train_optimize_baseline.py
+python Task1/task_X.py
  ```
 
 ```bash
-python Task2/SCRIPT_YOU_WANT.py
+python Task2/task_X.py
  ```
 
 ## Tasks
