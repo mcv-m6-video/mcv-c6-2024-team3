@@ -4,13 +4,14 @@
 The code of the tasks and data is structured as follows:
 
         .
-        ├── task_1                           # In this folder you can find the code of all the tasks mentioned on the folder.
+        ├── Task1                           # In this folder you can find the code of all the tasks mentioned on the folder.
         │   ├── datasets/                    # This folder remain the same as the one given.
-        │   |   └── HMDB51Dataset.py         # This file remain the same as the one given.
+        │   |   └── HMDB51Dataset.py         # This file has been modified to adapt the dataset to the different possible approaches.
         │   ├── models/
-        │   │   └── model_creator.py         # This file has been changed to add the modifications to X3D-XS and MoViNet-A0
-        │   ├── utils/                       # This folder remain the same as the one given.
-        │   ├── inference_custom_videos.py   # This file is used to do inference with the desired models.
+        │   │   └── model_creator.py         # This file has been changed to add the modifications to X3D-XS and MoViNet-A0.
+        │   ├── utils/                       # We have added 2 new files
+        │   |   ├── convert_to_3D.py         # It takes the npy files containing the OF and created their visualization.
+        │   │   └── duplicate_last_frame.py  # This duplicates the last frame of every action.
         │   ├── pytorchtools.py              # Library for the [EarlyStop](https://github.com/Bjarten/early-stopping-pytorch/tree/master).
         │   └── train_optimize_baseline.py   # This is the baseline training code slightly modified for our task.
         ├── Task2                            # In this folder you can find the code of the task 2.
@@ -33,7 +34,7 @@ Other files in the repository are just requirements and functions to execute th
 To run the code you have just to add the frames folder into the root folder of the repository and then execute
 
 ```bash
-python Task1/task_X.py
+python Task1/train_optimize_baseline.py
  ```
 
 ```bash
